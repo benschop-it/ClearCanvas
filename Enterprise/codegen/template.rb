@@ -32,8 +32,8 @@ class Template
     return if(!@overwrite && File.exist?(outputPath))
     
     # create the erb once only, since it can be re-used
-    @codeERB = ERB.new(IO.read(File.expand_path(@codeTemplateFile, templateDir)), nil, "") if @codeERB == nil
-  
+    @codeERB = ERB.new(IO.read(File.expand_path(@codeTemplateFile, templateDir)), trim_mode: nil) if @codeERB == nil
+
     #create output folder if doesn't exist
     FileUtils.mkdir_p(File.split(outputPath)[0])
 
