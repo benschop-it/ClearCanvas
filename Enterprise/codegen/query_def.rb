@@ -1,8 +1,8 @@
-require 'element_def'
-require 'query_result_def'
-require 'query_criteria_def'
-require 'model'
-require 'type_name_utils'
+require_relative 'element_def'
+require_relative 'query_result_def'
+require_relative 'query_criteria_def'
+require_relative 'model'
+require_relative 'type_name_utils'
 
 # Represents the definition of a query (an HQL report query)
 class QueryDef < ElementDef

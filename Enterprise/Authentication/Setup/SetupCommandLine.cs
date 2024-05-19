@@ -32,7 +32,7 @@ namespace ClearCanvas.Enterprise.Authentication.Setup
 		/// Import default groups by default.
 		/// </summary>
 		private bool _importDefaultAuthorityGroups = true;
-		private string _sysAdminUserName = "sa";
+		private string _sysAdminUserName = "cc";
 		private string _sysAdminDisplayName = "sysadmin";
 		private string _sysAdminInitialPassword = "clearcanvas";
 
@@ -46,7 +46,7 @@ namespace ClearCanvas.Enterprise.Authentication.Setup
 			set { _importDefaultAuthorityGroups = value; }
 		}
 
-		[CommandLineParameter("suid", "Specifies the system admin user-name.  Default is 'sa'.")]
+		[CommandLineParameter("suid", "Specifies the system admin user-name.  Default is 'cc'.")]
 		public string SysAdminUserName
 		{
 			get { return _sysAdminUserName; }

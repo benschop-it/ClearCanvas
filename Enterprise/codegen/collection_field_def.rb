@@ -1,5 +1,5 @@
-require 'field_def'
-require 'type_name_utils'
+require_relative 'field_def'
+require_relative 'type_name_utils'
 
 # Represents the definition of a field that is a collection type,
 # such as an IList or ISet
@@ -14,7 +14,7 @@ class CollectionFieldDef < FieldDef
     @elementNode = fieldNode.elements['element'] || fieldNode.elements['composite-element'] || fieldNode.elements['one-to-many'] || fieldNode.elements['many-to-many']
     @elementType = 
 	case 
-	    when @elementNode.attributes['class'] : TypeNameUtils.getQualifiedName(@elementNode.attributes['class'], defaultNamespace)
+	    when @elementNode.attributes['class'] then TypeNameUtils.getQualifiedName(@elementNode.attributes['class'], defaultNamespace)
 	    when @elementNode.attributes['type']
 			t = @elementNode.attributes['type']
 			TypeNameUtils.isHbm(t) ? TypeNameUtils.getTypeNameFromHbm(t) : TypeNameUtils.getShortName(DATATYPE_MAPPINGS[t] || t)
@@ -70,7 +70,7 @@ class CollectionFieldDef < FieldDef
     attrs = super
     if(@elementNode)
 	    case
-	      when @elementNode.name == 'composite-element' : attrs << "EmbeddedValueCollection(typeof(#{elementType}))"
+	      when @elementNode.name == 'composite-element' then attrs << "EmbeddedValueCollection(typeof(#{elementType}))"
 	      #when @elementNode.name == 'one-to-many' : attrs << "OneToMany(typeof(#{elementType}))"
 	      #when @elementNode.name == 'many-to-many' : attrs << "ManyToMany(typeof(#{elementType}))"
 	    end

@@ -1,4 +1,4 @@
-require 'element_def'
+require_relative 'element_def'
 
 # Provides a common base class for QueryCriteriaDef and QueryResultDef
 # This class does not have much significance in and of itself

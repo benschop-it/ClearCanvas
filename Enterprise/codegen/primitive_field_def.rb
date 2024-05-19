@@ -1,6 +1,6 @@
-require 'field_def'
-require 'constants'
-require 'type_name_utils'
+require_relative 'field_def'
+require_relative 'constants'
+require_relative 'type_name_utils'
 
 # Represents the definition of a field that is a primitive C# type,
 # such as a string or integer

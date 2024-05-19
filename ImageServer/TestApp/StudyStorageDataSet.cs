@@ -23,8 +23,8 @@
 #endregion
 
 namespace ClearCanvas.ImageServer.TestApp {
-    
-    
+
+
     public partial class StudyStorageDataSet {
     }
 }

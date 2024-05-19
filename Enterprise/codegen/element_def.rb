@@ -1,5 +1,5 @@
 require 'rexml/document'
-require 'constants'
+require_relative 'constants'
 
 # Base class for all definitions in the model
 # the Model itself is a subclass of ElementDef

@@ -31,7 +31,7 @@ namespace ClearCanvas.Enterprise.Common.Setup
 		public SetSettingCommandLine()
 		{
 			Password = "clearcanvas";
-			UserName = "sa";
+			UserName = "cc";
 		}
 
 		/// <summary>
@@ -73,7 +73,7 @@ namespace ClearCanvas.Enterprise.Common.Setup
 		/// <summary>
 		/// Specifies user name to connect to enterprise server.
 		/// </summary>
-		[CommandLineParameter("suid", "Specifies user name to connect to enterprise server. Default is 'sa'.")]
+		[CommandLineParameter("suid", "Specifies user name to connect to enterprise server. Default is 'cc'.")]
 		public string UserName { get; set; }
 
 		/// <summary>

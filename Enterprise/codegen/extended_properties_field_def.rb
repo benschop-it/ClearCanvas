@@ -1,5 +1,5 @@
-require 'collection_field_def'
-require 'type_name_utils'
+require_relative 'collection_field_def'
+require_relative 'type_name_utils'
 
 # Represents the definition of a field that is a dictionary of extended properties
 class ExtendedPropertiesFieldDef < CollectionFieldDef

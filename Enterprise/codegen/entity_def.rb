@@ -1,4 +1,4 @@
-require 'class_def'
+require_relative 'class_def'
 
 # Represents the definition of an entity class
 class EntityDef < ClassDef

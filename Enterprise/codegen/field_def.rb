@@ -1,4 +1,4 @@
-require 'element_def'
+require_relative 'element_def'
 
 # represents the definition of a field within a ClassDef
 # see subclasses PrimitiveFieldDef, EnumFieldDef, ComponentFieldDef, EntityFieldDef, CollectionFieldDef, UserTypeFieldDef

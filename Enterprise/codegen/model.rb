@@ -1,9 +1,9 @@
-require 'element_def'
-require 'entity_def'
-require 'enum_def'
-require 'component_def'
-require 'query_def'
-require 'type_name_utils'
+require_relative 'element_def'
+require_relative 'entity_def'
+require_relative 'enum_def'
+require_relative 'component_def'
+require_relative 'query_def'
+require_relative 'type_name_utils'
 
 # Represents a domain model defined by a set of NHibernate XML mappings
 class Model < ElementDef
@@ -28,8 +28,8 @@ class Model < ElementDef
   #	"hardenum" - for enum classes only, forces generation of hard enum classes, even if not referenced
   def add(fileName, directives)
     case
-      when fileName.include?('.hbm.xml') : addHbmFile(fileName, directives)
-      when fileName.include?('.hrq.xml') : addHrqFile(fileName)
+      when fileName.include?('.hbm.xml') then addHbmFile(fileName, directives)
+      when fileName.include?('.hrq.xml') then addHrqFile(fileName)
     end
   end
   

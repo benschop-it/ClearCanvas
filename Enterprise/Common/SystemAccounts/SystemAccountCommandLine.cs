@@ -31,14 +31,14 @@ namespace ClearCanvas.Enterprise.Common.SystemAccounts
 		public SystemAccountCommandLine()
 		{
 			Password = "clearcanvas";
-			UserName = "sa";
+			UserName = "cc";
 			Verbose = true;
 		}
 
 		/// <summary>
 		/// Specifies user name to connect to enterprise server.
 		/// </summary>
-		[CommandLineParameter("suid", "Specifies user name to connect to enterprise server. Default is 'sa'.")]
+		[CommandLineParameter("suid", "Specifies user name to connect to enterprise server. Default is 'cc'.")]
 		public string UserName { get; set; }
 
 		/// <summary>

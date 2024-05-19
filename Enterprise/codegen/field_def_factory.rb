@@ -1,12 +1,12 @@
-require 'constants'
-require 'primitive_field_def'
-require 'collection_field_def'
-require 'enum_field_def'
-require 'component_field_def'
-require 'entity_field_def'
-require 'user_type_field_def'
-require 'type_name_utils'
-require 'extended_properties_field_def'
+require_relative 'constants'
+require_relative 'primitive_field_def'
+require_relative 'collection_field_def'
+require_relative 'enum_field_def'
+require_relative 'component_field_def'
+require_relative 'entity_field_def'
+require_relative 'user_type_field_def'
+require_relative 'type_name_utils'
+require_relative 'extended_properties_field_def'
 
 # Factory class to create FieldDef subclasses of the correct type, based upon the specified fieldNode
 class FieldDefFactory

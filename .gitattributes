@@ -13,10 +13,8 @@
 *.h      diff=astextplain
 *.c      diff=astextplain
 *.sh     diff=astextplain
-*.rb     diff=astextplain
 *.css    diff=astextplain
 *.js     diff=astextplain
-*.csproj diff=astextplain
 *.resx   diff=astextplain
 *.html   diff=astextplain
 *.txt    diff=astextplain

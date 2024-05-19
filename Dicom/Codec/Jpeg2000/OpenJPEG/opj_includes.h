@@ -93,7 +93,7 @@ Most compilers implement their own version of this keyword ...
 #ifdef _MSC_VER
 #ifdef _M_X64
 #include <emmintrin.h>
-static INLINE long lrintf(float f) {
+static INLINE long opj_lrintf(float f) {
         return _mm_cvtss_si32(_mm_load_ss(&f));
 }
 

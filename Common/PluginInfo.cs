@@ -47,7 +47,9 @@ namespace ClearCanvas.Common
 		/// <param name="extensions"></param>
 		internal static void DiscoverExtensionPointsAndExtensions(Assembly asm, List<ExtensionPointInfo> points, List<ExtensionInfo> extensions)
 		{
-			foreach (var type in asm.GetTypes())
+			var types = asm.GetTypes();
+
+			foreach (var type in types)
 			{
 				var epAttr = AttributeUtils.GetAttribute<ExtensionPointAttribute>(type, false);
 				if (epAttr != null)
