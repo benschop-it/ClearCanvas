@@ -1,0 +1,31 @@
+// This file is machine generated - changes will be lost.
+using ClearCanvas.Enterprise.Core;
+using ClearCanvas.Enterprise.Core.Modelling;
+
+
+namespace ClearCanvas.Workflow
+{
+
+    /// <summary>
+    /// WorkQueueItemTypeEnum enumeration
+    /// </summary>
+	[UniqueKey("Code", new [] { "Code" })]
+	[UniqueKey("Value", new [] { "Value" })]
+    public partial class WorkQueueItemTypeEnum : EnumValue
+    {
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+		protected WorkQueueItemTypeEnum()
+		{
+		}
+		
+		/// <summary>
+		/// Constructor for creating dummy values during unit testing. Not for production use.
+		/// </summary>
+		public WorkQueueItemTypeEnum(string code, string value, string description)
+			:base(code, value, description)
+		{
+		}
+    }
+}

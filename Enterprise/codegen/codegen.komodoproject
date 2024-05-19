@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="FBF2F718-ED6A-4C11-BCAF-9999A427D389" kpf_version="5" name="codegen.komodoproject">
+<file id="03248A99-5115-4C2A-B578-B4FE7123B103" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="IEntityBroker.gen.ct" url="templates/IEntityBroker.gen.ct">
+</file>
+<file id="06FE5C26-9B13-4A3C-B743-8DC3E0C2963B" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="enum.ct" url="templates/enum.ct">
+</file>
+<file id="260FC8A3-B864-418E-86F2-7A817C229F11" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="EnumHbm.gen.ct" url="templates/EnumHbm.gen.ct">
+</file>
+<file id="2981A8C3-41B2-4824-B2FE-94E54CBBCEE0" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="SearchCriteria.gen.ct" url="templates/SearchCriteria.gen.ct">
+</file>
+<file id="2E45AE21-9579-490C-9640-18D60172B937" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="IDomainServiceLayer.gen.ct" url="templates/IDomainServiceLayer.gen.ct">
+</file>
+<file id="402E67A8-5416-4989-A612-048A1BAC935D" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="DomainServiceLayer.gen.ct" url="templates/DomainServiceLayer.gen.ct">
+</file>
+<file id="44DC8CDD-2C0E-4BB2-9586-2B825402DFDB" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="EnumValue.gen.ct" url="templates/EnumValue.gen.ct">
+</file>
+<file id="4D9DF31E-0A34-4109-99E2-A725ECD4305B" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="Entity.ct" url="templates/Entity.ct">
+</file>
+<file id="7FC0CCEB-0471-49A2-AF10-663A282E66A9" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="Component.ct" url="templates/Component.ct">
+</file>
+<file id="AC7B1877-AA6C-4FE3-A86C-E23A26DA50C7" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="IEnumBroker.gen.ct" url="templates/IEnumBroker.gen.ct">
+</file>
+<file id="BA29CCC4-DED9-40C1-8298-A9CFD27E3EBB" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="EnumBroker.gen.ct" url="templates/EnumBroker.gen.ct">
+</file>
+<file id="C5662F3B-A07D-4E39-AD12-6CB69DC72125" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="EnumTable.gen.ct" url="templates/EnumTable.gen.ct">
+</file>
+<file id="DC406398-4B26-499C-96D2-14AE36C8B869" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="Component.gen.ct" url="templates/Component.gen.ct">
+</file>
+<file id="EAE502B2-BD8B-4E05-89F5-33A0E533B73D" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="Entity.gen.ct" url="templates/Entity.gen.ct">
+</file>
+<file id="F1EE418A-2CD6-435F-BFA2-1A73065CAA28" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="EntityBroker.gen.ct" url="templates/EntityBroker.gen.ct">
+</file>
+<file id="FF675E92-7A06-4A8B-9FCC-8E10905358D7" idref="079EB623-1994-4F43-A5E4-20B3E70D364B" name="Support.gen.ct" url="templates/Support.gen.ct">
+</file>
+<file id="00A21580-DDC0-45FA-B6BC-80A257CC5434" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="primitivefielddef.rb" url="primitivefielddef.rb">
+</file>
+<folder id="079EB623-1994-4F43-A5E4-20B3E70D364B" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="templates">
+</folder>
+<file id="0999388E-A35B-4056-9442-3479D9F672A5" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="usertypefielddef.rb" url="usertypefielddef.rb">
+</file>
+<file id="15252DF4-32E1-4A2A-9F3A-4C82A50020B8" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="entityfielddef.rb" url="entityfielddef.rb">
+</file>
+<file id="16D992BE-8BD6-491A-8A36-808F3CECDDC6" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="entitydef.rb" url="entitydef.rb">
+</file>
+<file id="23FEC3F6-0A63-4582-9BD8-1ECA77C924DD" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="componentfielddef.rb" url="componentfielddef.rb">
+</file>
+<file id="26CE28FD-CC8B-47B3-99BC-03B3378C7A79" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="enumfielddef.rb" url="enumfielddef.rb">
+</file>
+<file id="2DE4BDF4-D76F-4E1F-AACF-A04DD9F175E5" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="template.rb" url="template.rb">
+</file>
+<file id="2FBCFA8E-D809-4D9C-94ED-D2ACD8CB87EE" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="collectionfielddef.rb" url="collectionfielddef.rb">
+</file>
+<file id="42E1F876-3BD6-432D-998D-5D14A6C32A37" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="classdef.rb" url="classdef.rb">
+</file>
+<file id="58E31274-F056-4169-A6B1-493FE3B9C457" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="fielddef.rb" url="fielddef.rb">
+</file>
+<file id="5BB09284-55A1-464F-B608-A898ADF51F19" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="codegen.rb" url="codegen.rb">
+</file>
+<file id="74CE8D57-63C8-4F48-BA07-59EEDEE8EB92" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="componentdef.rb" url="componentdef.rb">
+</file>
+<file id="A778B9D6-30AB-4299-9233-8F2CEF4F3B86" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="enumdef.rb" url="enumdef.rb">
+</file>
+<file id="CD428679-2959-43D3-BC65-AFB61E295A6A" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="model.rb" url="model.rb">
+</file>
+<file id="E1E8F3E5-7F27-4357-9DC7-21F630B2A2AD" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="elementdef.rb" url="elementdef.rb">
+</file>
+<file id="F5C79AB2-B9F7-4870-84FF-08F61F36A601" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="constants.rb" url="constants.rb">
+</file>
+<file id="FA95A139-27A9-4A3C-8451-3ED68E9C36DC" idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" name="fielddeffactory.rb" url="fielddeffactory.rb">
+</file>
+<preference-set idref="FBF2F718-ED6A-4C11-BCAF-9999A427D389" id="project" preftype="project">
+<preference-set id="Invocations">
+<preference-set id="Project">
+  <string id="cookieparams"></string>
+  <string relative="path" id="cwd"></string>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename"></string>
+  <string id="getparams"></string>
+  <string id="language">Ruby</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+</preference-set>
+</preference-set>
+  <string id="currentInvocationLanguage">Ruby</string>
+  <string relative="path" id="import_dirname"></string>
+  <string id="language">Ruby</string>
+  <string id="lastInvocation">Project</string>
+  <string id="last_local_directory">None</string>
+  <string id="last_remote_directory">None</string>
+  <long id="prefs_version">1</long>
+  <string id="projectLanguage">Ruby</string>
+</preference-set>
+</project>
