@@ -239,8 +239,8 @@ namespace ClearCanvas.Enterprise.Hibernate
 			var diffs = new PropertyDiff[propertyNames.Length];
 			for (var i = 0; i < diffs.Length; i++)
 			{
-				var oldValue = previousState == null ? null : previousState[i];
-				var newValue = currentState == null ? null : currentState[i];
+                object oldValue = previousState == null ? null : previousState[i];
+                object newValue = currentState == null ? null : currentState[i];
 
 				// need to handle collections specially
 				if (types[i].IsCollectionType && ReferenceEquals(oldValue, newValue))
@@ -276,11 +276,16 @@ namespace ClearCanvas.Enterprise.Hibernate
 				return null;
 
 			// unfortunately, the snapshot is not always stored in the same data structure as the collection itself
-			if (collection is ISet)
+			if (collection is ISet<object>)
 			{
 				// "set"
 				// we return an untyped set - this is a bit lazy, we could create a typed set with some extra effort, but do we need it?
-				return new HybridSet((ICollection)snapshot);
+
+				var set =  new HashSet<object>();
+				foreach (var s in (ICollection)snapshot) {
+					set.Add(s);
+				}
+				return set;
 			}
 			if (collection is IList && snapshot is IDictionary)
 			{

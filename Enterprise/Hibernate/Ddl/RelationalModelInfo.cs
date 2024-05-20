@@ -139,7 +139,7 @@ namespace ClearCanvas.Enterprise.Hibernate.Ddl
 		private static List<Table> GetTables(Configuration cfg, RelationalSchemaOptions.NamespaceFilterOption namespaceFilter)
 		{
 			// build set of all tables
-			var tables = new HybridSet();
+			var tables = new HashSet<Table>();
 			var filteredClassMappings = CollectionUtils.Select(
 				cfg.ClassMappings, 
 				classMapping => namespaceFilter.Matches(classMapping.MappedClass.Namespace));
@@ -189,7 +189,7 @@ namespace ClearCanvas.Enterprise.Hibernate.Ddl
 				table.Schema,
 				CollectionUtils.Map(table.ColumnIterator, (Column column) => new ColumnInfo(column, config, dialect)),
 				new ConstraintInfo(table, table.PrimaryKey),
-				CollectionUtils.Map(table.IndexIterator, (Index index) => new IndexInfo(table, index)),
+				CollectionUtils.Map(table.IndexIterator, (NHibernate.Mapping.Index index) => new IndexInfo(table, index)),
 				CollectionUtils.Map(table.ForeignKeyIterator, (ForeignKey fk) => new ForeignKeyInfo(table, fk, config)),
 				uniqueKeys
 				);

@@ -86,7 +86,7 @@ namespace ClearCanvas.Enterprise.Hibernate.Ddl
                 // many-to-many collection
 
                 // collect all columns that participate in foreign keys
-                HybridSet columns = new HybridSet();
+                ISet<Column> columns = new HashSet<Column>();
                 foreach (ForeignKey fk in collection.CollectionTable.ForeignKeyIterator)
                 {
                     CollectionUtils.ForEach(fk.ColumnIterator, 

@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.Text;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Dialect;
 using NHibernate.Engine;
 using NHibernate.Mapping;
 using NHibernate.Type;
@@ -39,6 +40,8 @@ namespace ClearCanvas.Enterprise.Hibernate.Ddl
     internal class Mapping : IMapping
     {
         private readonly Configuration configuration;
+
+        public Dialect Dialect => throw new NotImplementedException();
 
         public Mapping(Configuration configuration)
         {

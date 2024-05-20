@@ -65,7 +65,7 @@ namespace ClearCanvas.Enterprise.Hibernate
 
         public void AddToConfiguration(Configuration cfg)
         {
-            ArrayList orderedHbms;
+            ISet<ClassEntry> orderedHbms;
             ArrayList extraFiles;
             this.GetHbmFiles(out orderedHbms, out extraFiles);
 
@@ -103,9 +103,9 @@ namespace ClearCanvas.Enterprise.Hibernate
         /// <param name="classEntries">an ordered list of class entries</param>
         /// <param name="nonClassFiles">a list of files that do not contain classes.  These extra files may define filters, etc. 
         /// that are being used by the classes</param>
-		private void GetHbmFiles(out ArrayList classEntries, out ArrayList nonClassFiles)
+		private void GetHbmFiles(out ISet<ClassEntry> classEntries, out ArrayList nonClassFiles)
 		{
-			HashedSet classes = new HashedSet();
+			ISet<ClassEntry> classes = new HashSet<ClassEntry>();
 
 			// tracks if any hbm.xml files make use of the "extends" attribute
 			bool containsExtends = false;
@@ -187,15 +187,17 @@ namespace ClearCanvas.Enterprise.Hibernate
 			}
 			else
 			{
-                ArrayList unSortedList = new ArrayList();
-			    unSortedList.AddRange(classes);
+                ISet<ClassEntry> unSortedList = new HashSet<ClassEntry>();
+                foreach (var c in classes) {
+                    unSortedList.Add(c);
+                }
 			    classEntries = unSortedList;
 			}
 
 		    nonClassFiles = extraFiles;
 		}
 
-		private static string FormatExceptionMessage(ISet classEntries)
+		private static string FormatExceptionMessage(ISet<ClassEntry> classEntries)
 		{
 			StringBuilder message = new StringBuilder("These classes extend unmapped classes:");
 
@@ -218,12 +220,12 @@ namespace ClearCanvas.Enterprise.Hibernate
 		/// <returns>
 		/// An <see cref="IList"/> of <see cref="String"/> objects that contain the <c>hbm.xml</c> file names.
 		/// </returns>
-        private static ArrayList OrderedHbmFiles(ISet unorderedClasses)
+        private static ISet<ClassEntry> OrderedHbmFiles(ISet<ClassEntry> unorderedClasses)
 		{
 			// Make sure joined-subclass mappings are loaded after base class
-			ArrayList sortedList = new ArrayList();
-			ISet processedClassNames = new HashedSet();
-			ArrayList processedInThisIteration = new ArrayList();
+			ISet<ClassEntry> sortedList = new HashSet<ClassEntry>();
+			ISet<AssemblyQualifiedTypeName> processedClassNames = new HashSet<AssemblyQualifiedTypeName>();
+			List<ClassEntry> processedInThisIteration = new List<ClassEntry>();
 
 			while (true)
 			{
@@ -244,11 +246,13 @@ namespace ClearCanvas.Enterprise.Hibernate
 					}
 				}
 
-				unorderedClasses.RemoveAll(processedInThisIteration);
+                foreach (var item in processedInThisIteration) {
+                    unorderedClasses.Remove(item);
+                }
 
 				if (processedInThisIteration.Count == 0)
 				{
-					if (!unorderedClasses.IsEmpty)
+					if (!(unorderedClasses.Count == 0))
 					{
 						throw new NHibernate.MappingException(FormatExceptionMessage(unorderedClasses));
 					}
