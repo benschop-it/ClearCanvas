@@ -78,7 +78,6 @@
     <Compile Remove="EmptyInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Iesi.Collections" Version="4.1.1" />
     <PackageReference Include="NHibernate" Version="5.5.1" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EE365C28-1573-42BB-866E-0CA92A3ACE93}"
@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		RisServer_dist.proj = RisServer_dist.proj
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Common", "..\..\Common\ClearCanvas.Common.csproj", "{F6EAD428-E6CF-4DF6-B2F3-D33D532C5343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Common", "..\..\Common\ClearCanvas.Common.csproj", "{F6EAD428-E6CF-4DF6-B2F3-D33D532C5343}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Healthcare", "..\..\Healthcare\ClearCanvas.Healthcare.csproj", "{748C08F1-FD6E-49F6-90BB-90C3A323C714}"
 EndProject
@@ -16,9 +16,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Workflow", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Workflow.Hibernate", "..\..\Workflow\Hibernate\ClearCanvas.Workflow.Hibernate.csproj", "{8B6F26E3-F067-414E-BEAA-F27481E0EFE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Configuration", "..\..\Enterprise\Configuration\ClearCanvas.Enterprise.Configuration.csproj", "{487A1D60-7FD7-4EBB-8EF2-2E0FA49652FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Configuration", "..\..\Enterprise\Configuration\ClearCanvas.Enterprise.Configuration.csproj", "{487A1D60-7FD7-4EBB-8EF2-2E0FA49652FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Configuration.Hibernate", "..\..\Enterprise\Configuration\Hibernate\ClearCanvas.Enterprise.Configuration.Hibernate.csproj", "{32C097AB-931A-44B0-9ED2-B6F343C3F588}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Configuration.Hibernate", "..\..\Enterprise\Configuration\Hibernate\ClearCanvas.Enterprise.Configuration.Hibernate.csproj", "{32C097AB-931A-44B0-9ED2-B6F343C3F588}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Server", "ClearCanvas.Ris.Server.csproj", "{977A05C3-8145-4EB0-A620-6526F91B2016}"
 EndProject
@@ -44,15 +44,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Server.Exec
 		{F3AC6B07-4E21-4BE2-875E-E4FC7BD240D0} = {F3AC6B07-4E21-4BE2-875E-E4FC7BD240D0}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Common", "..\..\Enterprise\Common\ClearCanvas.Enterprise.Common.csproj", "{B5EBFFD7-6641-4932-91C9-4C4322B41868}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Common", "..\..\Enterprise\Common\ClearCanvas.Enterprise.Common.csproj", "{B5EBFFD7-6641-4932-91C9-4C4322B41868}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Core", "..\..\Enterprise\Core\ClearCanvas.Enterprise.Core.csproj", "{431E9444-9915-4D49-B92D-9B7EC086622A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Core", "..\..\Enterprise\Core\ClearCanvas.Enterprise.Core.csproj", "{431E9444-9915-4D49-B92D-9B7EC086622A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Authentication", "..\..\Enterprise\Authentication\ClearCanvas.Enterprise.Authentication.csproj", "{F3AC6B07-4E21-4BE2-875E-E4FC7BD240D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Authentication", "..\..\Enterprise\Authentication\ClearCanvas.Enterprise.Authentication.csproj", "{F3AC6B07-4E21-4BE2-875E-E4FC7BD240D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Authentication.Hibernate", "..\..\Enterprise\Authentication\Hibernate\ClearCanvas.Enterprise.Authentication.Hibernate.csproj", "{E2266084-462A-446F-9CEA-9D132BC36851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Authentication.Hibernate", "..\..\Enterprise\Authentication\Hibernate\ClearCanvas.Enterprise.Authentication.Hibernate.csproj", "{E2266084-462A-446F-9CEA-9D132BC36851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Hibernate", "..\..\Enterprise\Hibernate\ClearCanvas.Enterprise.Hibernate.csproj", "{4CED35C2-4659-492D-8F85-F560E469BE11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Hibernate", "..\..\Enterprise\Hibernate\ClearCanvas.Enterprise.Hibernate.csproj", "{4CED35C2-4659-492D-8F85-F560E469BE11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Hibernate.DdlWriter", "..\..\Enterprise\Hibernate\DdlWriter\ClearCanvas.Enterprise.Hibernate.DdlWriter.csproj", "{298A5358-EF8F-4D27-A935-5E0E2BEF754F}"
 EndProject
@@ -88,7 +88,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Shreds", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Dicom", "..\..\Dicom\ClearCanvas.Dicom.csproj", "{AD9ECE2B-8268-4115-8DC8-860FBD011FFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Utilities.Manifest", "..\..\Utilities\Manifest\ClearCanvas.Utilities.Manifest.csproj", "{E2F1A5D4-73A4-4BA6-AA5A-87BBDEC727F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Utilities.Manifest", "..\..\Utilities\Manifest\ClearCanvas.Utilities.Manifest.csproj", "{E2F1A5D4-73A4-4BA6-AA5A-87BBDEC727F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
