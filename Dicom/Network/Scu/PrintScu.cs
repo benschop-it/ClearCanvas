@@ -23,7 +23,6 @@
 #endregion
 
 using System;
-using System.Runtime.Remoting.Messaging;
 using ClearCanvas.Common;
 using ClearCanvas.Common.Utilities;
 using ClearCanvas.Dicom.Iod;
@@ -77,60 +76,6 @@ namespace ClearCanvas.Dicom.Network.Scu
 		/// Specifies whether the SCU will be printing color or grayscale.  Default is grayscale.
 		/// </summary>
 		public ColorMode ColorMode { get; set; }
-
-		/// <summary>
-		/// Prints with the specified parameters.  Create all image boxes up-front.
-		/// </summary>
-		/// <param name="clientAETitle">The client AE title.</param>
-		/// <param name="remoteAE">The remote AE.</param>
-		/// <param name="remoteHost">The remote host.</param>
-		/// <param name="remotePort">The remote port.</param>
-		/// <param name="filmSession">The film session to print.</param>
-		public DicomState Print(string clientAETitle, string remoteAE, string remoteHost, int remotePort, FilmSession filmSession)
-		{
-			_filmSession = filmSession;
-			_filmSession.PrintScu = this;
-
-			Connect(clientAETitle, remoteAE, remoteHost, remotePort);
-			if (Status == ScuOperationStatus.Canceled)
-				return DicomState.Cancel;
-			if (Status == ScuOperationStatus.AssociationRejected || Status == ScuOperationStatus.Failed || Status == ScuOperationStatus.ConnectFailed ||
-			    Status == ScuOperationStatus.NetworkError || Status == ScuOperationStatus.TimeoutExpired)
-				return DicomState.Failure;
-			return ResultStatus;
-		}
-
-		/// <summary>
-		/// Begins the print asynchronously.
-		/// </summary>
-		/// <param name="clientAETitle">The client AE title.</param>
-		/// <param name="remoteAE">The remote AE.</param>
-		/// <param name="remoteHost">The remote host.</param>
-		/// <param name="remotePort">The remote port.</param>
-		/// <param name="filmSession">The film session to print.</param>
-		/// <param name="callback">The callback.</param>
-		/// <param name="asyncState">State of the async.</param>
-		/// <returns></returns>
-		public IAsyncResult BeginPrint(string clientAETitle, string remoteAE, string remoteHost, int remotePort, FilmSession filmSession, AsyncCallback callback, object asyncState)
-		{
-			var printDelegate = new PrintDelegate(this.Print);
-			return printDelegate.BeginInvoke(clientAETitle, remoteAE, remoteHost, remotePort, filmSession, callback, asyncState);
-		}
-
-		/// <summary>
-		/// Ends the asynchronous print.
-		/// </summary>
-		/// <param name="ar">The ar.</param>
-		/// <returns></returns>
-		public DicomState EndPrint(IAsyncResult ar)
-		{
-			var printDelegate = ((AsyncResult) ar).AsyncDelegate as PrintDelegate;
-
-			if (printDelegate == null)
-				throw new InvalidOperationException("cannot get results, asynchresult is null");
-
-			return printDelegate.EndInvoke(ar);
-		}
 
 		#endregion
 

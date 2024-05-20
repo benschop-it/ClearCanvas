@@ -56,14 +56,6 @@ namespace ClearCanvas.Dicom.ServiceModel.Streaming
         }
 
 		/// <summary>
-		/// Constructor - uses input configuration name to configure endpoint and bindings.
-		/// </summary>
-		public HeaderStreamingServiceClient(string endpointConfigurationName)
-			: base(endpointConfigurationName)
-		{
-		}
-
-		/// <summary>
 		/// Constructor - uses input endpoint and binding.
 		/// </summary>
 		public HeaderStreamingServiceClient(Binding binding, EndpointAddress remoteAddress)
@@ -71,14 +63,6 @@ namespace ClearCanvas.Dicom.ServiceModel.Streaming
 		{
 		}
 
-		/// <summary>
-		/// Constructor - uses input endpoint, loads bindings from given configuration name.
-		/// </summary>
-        public HeaderStreamingServiceClient(string endpointConfigurationName, EndpointAddress remoteAddress)
-			: base(endpointConfigurationName, remoteAddress)
-		{
-		}
-        
         #region IHeaderStreamingService Members
 
         /// <summary>

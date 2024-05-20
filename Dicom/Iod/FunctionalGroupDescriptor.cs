@@ -23,7 +23,7 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.Linq;
 using ClearCanvas.Common;
 using ClearCanvas.Common.Utilities;
@@ -106,7 +106,7 @@ namespace ClearCanvas.Dicom.Iod
 		/// <summary>
 		/// The tag to functional group mapping by SOP class.
 		/// </summary>
-		private static readonly Dictionary<string, IDictionary<uint, FunctionalGroupDescriptor>> _functionalGroupTagMap = new Dictionary<string, IDictionary<uint, FunctionalGroupDescriptor>>();
+		private static readonly System.Collections.Generic.Dictionary<string, System.Collections.Generic.IDictionary<uint, FunctionalGroupDescriptor>> _functionalGroupTagMap = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IDictionary<uint, FunctionalGroupDescriptor>>();
 
 		/// <summary>
 		/// Gets the functional group in which the specified DICOM tag is uniquely used for a given SOP class.
@@ -132,13 +132,13 @@ namespace ClearCanvas.Dicom.Iod
 		/// </remarks>
 		/// <param name="sopClassUid">The SOP class UID.</param>
 		/// <returns></returns>
-		public static IDictionary<uint, FunctionalGroupDescriptor> GetFunctionalGroupMap(string sopClassUid)
+		public static System.Collections.Generic.IDictionary<uint, FunctionalGroupDescriptor> GetFunctionalGroupMap(string sopClassUid)
 		{
 			// normalize the SOP class UID
 			if (sopClassUid == null || !_functionalGroupUsage.ContainsKey(sopClassUid)) sopClassUid = String.Empty;
 
 			// get the tag map for the indicated SOP class - building the tag map now if necessary
-			IDictionary<uint, FunctionalGroupDescriptor> tagMap;
+			System.Collections.Generic.IDictionary<uint, FunctionalGroupDescriptor> tagMap;
 			if (!_functionalGroupTagMap.TryGetValue(sopClassUid, out tagMap))
 			{
 				var functionalGroups = GetApplicableFunctionalGroups(sopClassUid).Select(t => t.Create()).ToList();
@@ -162,7 +162,7 @@ namespace ClearCanvas.Dicom.Iod
 		/// </summary>
 		/// <param name="sopClassUid">The SOP class UID.</param>
 		/// <returns></returns>
-		public static IEnumerable<FunctionalGroupDescriptor> GetApplicableFunctionalGroups(string sopClassUid)
+		public static System.Collections.Generic.IEnumerable<FunctionalGroupDescriptor> GetApplicableFunctionalGroups(string sopClassUid)
 		{
 			FunctionalGroupDescriptor[] functionalGroups;
 			return _functionalGroupUsage.TryGetValue(sopClassUid ?? String.Empty, out functionalGroups) ? functionalGroups : _functionalGroupUsage[String.Empty];
@@ -171,14 +171,14 @@ namespace ClearCanvas.Dicom.Iod
 		/// <summary>
 		/// Maps core functional group types to their descriptors. Cannot just statically define them on the classes themselves, otherwise there is a circular class initialization dependency.
 		/// </summary>
-		private static readonly Dictionary<Type, FunctionalGroupDescriptor> _functionalGroupDescriptors = typeof (FunctionalGroupDescriptor).Assembly
+		private static readonly System.Collections.Generic.Dictionary<Type, FunctionalGroupDescriptor> _functionalGroupDescriptors = typeof (FunctionalGroupDescriptor).Assembly
 			.GetTypes().Where(t => typeof (FunctionalGroupMacro).IsAssignableFrom(t) && !t.IsAbstract)
 			.ToDictionary(t => t, t => new FunctionalGroupDescriptor(t));
 
 		/// <summary>
 		/// List of functional groups by SOP class. Each list of functional groups should be in order of descending priority in the event of tags that appear in multiple groups.
 		/// </summary>
-		private static readonly Dictionary<string, FunctionalGroupDescriptor[]> _functionalGroupUsage = new Dictionary<string, FunctionalGroupDescriptor[]>
+		private static readonly System.Collections.Generic.Dictionary<string, FunctionalGroupDescriptor[]> _functionalGroupUsage = new System.Collections.Generic.Dictionary<string, FunctionalGroupDescriptor[]>
 		                                                                                                	{
 		                                                                                                		#region General Multi-Frame Fallback
 		                                                                                                		{

@@ -25,7 +25,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.Remoting.Messaging;
 using ClearCanvas.Common;
 using ClearCanvas.Dicom.Iod;
 using ClearCanvas.Dicom.Iod.Iods;
@@ -220,58 +219,6 @@ namespace ClearCanvas.Dicom.Network.Scu
             return findDelegate.BeginInvoke(clientAETitle, remoteAE, remoteHost, remotePort, requestAttributeCollection, callback, asyncState);
         }
 
-        /// <summary>
-        /// Begins the find request in asynchronous mode.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="clientAETitle">The client AE title.</param>
-        /// <param name="remoteAE">The remote AE.</param>
-        /// <param name="remoteHost">The remote host.</param>
-        /// <param name="remotePort">The remote port.</param>
-        /// <param name="iod">The iod.</param>
-        /// <param name="callback">The callback.</param>
-        /// <param name="asyncState">State of the async.</param>
-        /// <returns></returns>
-        public IAsyncResult BeginFind<T>(string clientAETitle, string remoteAE, string remoteHost, int remotePort, T iod, AsyncCallback callback, object asyncState)
-            where T : IodBase, new()
-        {
-            GenericFindDelegate<T> findDelegate = Find<T>;
-
-            return findDelegate.BeginInvoke(clientAETitle, remoteAE, remoteHost, remotePort, iod, callback, asyncState);
-        }
-
-        /// <summary>
-        /// Ends the asynchronous find request.
-        /// </summary>
-        /// <param name="ar">The ar.</param>
-        /// <returns></returns>
-        public IList<DicomAttributeCollection> EndFind(IAsyncResult ar)
-        {
-            FindDelegate findDelegate = ((AsyncResult)ar).AsyncDelegate as FindDelegate;
-            if (findDelegate != null)
-            {
-                return findDelegate.EndInvoke(ar);
-            }
-            else
-                throw new InvalidOperationException("cannot get results, asynchresult is null");
-        }
-
-        /// <summary>
-        /// Ends the asynchronous find request.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="ar">The ar.</param>
-        /// <returns></returns>
-        public IList<T> EndFind<T>(IAsyncResult ar)
-        {
-            GenericFindDelegate<T> findDelegate = ((AsyncResult)ar).AsyncDelegate as GenericFindDelegate<T>;
-            if (findDelegate != null)
-            {
-                return findDelegate.EndInvoke(ar);
-            }
-            else
-                throw new InvalidOperationException("cannot get results, asynchresult is null");
-        }
         #endregion
 
         #region Protected Abstract Methods

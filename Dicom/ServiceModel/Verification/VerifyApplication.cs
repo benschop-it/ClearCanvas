@@ -46,7 +46,8 @@ namespace ClearCanvas.Dicom.ServiceModel.Verification
 							Description = SR.VerifyAssociationRejected,
 							Result = result
 						};
-					throw new FaultException<VerificationFailedFault>(fault, fault.Description);
+
+                    throw new FaultException<VerificationFailedFault>(fault, new FaultReason(fault.Description));
 				}
 				if (result == VerificationResult.Failed)
 				{
@@ -55,7 +56,7 @@ namespace ClearCanvas.Dicom.ServiceModel.Verification
 							Description = SR.VerifyFailed,
 							Result =  result
 						};
-					throw new FaultException<VerificationFailedFault>(fault, fault.Description);
+					throw new FaultException<VerificationFailedFault>(fault, new FaultReason(fault.Description));
 				}
 				if (result == VerificationResult.Canceled)
 				{
@@ -64,7 +65,7 @@ namespace ClearCanvas.Dicom.ServiceModel.Verification
 							Description = SR.VerifyCanceled,
 							Result = result
 						};
-					throw new FaultException<VerificationFailedFault>(fault, fault.Description);
+					throw new FaultException<VerificationFailedFault>(fault, new FaultReason(fault.Description));
 				}
 				if (result == VerificationResult.TimeoutExpired)
 				{
@@ -73,7 +74,7 @@ namespace ClearCanvas.Dicom.ServiceModel.Verification
 							Description = SR.VerifyTimeoutExpired,
 							Result = result
 						};
-					throw new FaultException<VerificationFailedFault>(fault, fault.Description);
+					throw new FaultException<VerificationFailedFault>(fault, new FaultReason(fault.Description));
 				}
 
 				return new VerifyResponse
@@ -89,7 +90,7 @@ namespace ClearCanvas.Dicom.ServiceModel.Verification
 					Description = e.Message,
 					Result = VerificationResult.Failed
 				};
-				throw new FaultException<VerificationFailedFault>(fault, fault.Description);
+				throw new FaultException<VerificationFailedFault>(fault, new FaultReason(fault.Description));
 			}
 		}
 	}

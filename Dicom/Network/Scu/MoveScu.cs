@@ -229,24 +229,6 @@ namespace ClearCanvas.Dicom.Network.Scu
         }
 
         /// <summary>
-        /// Ends the move (asynchronous mode).  
-        /// </summary>
-        /// <param name="ar">The ar.</param>
-        public void EndMove(IAsyncResult ar)
-        {
-            MoveDelegate moveDelegate = ((System.Runtime.Remoting.Messaging.AsyncResult)ar).AsyncDelegate as MoveDelegate;
-
-            if (moveDelegate != null)
-            {
-                moveDelegate.EndInvoke(ar);
-            }
-            else
-            {
-                throw new InvalidOperationException("cannot end invoke, asynchresult is null");
-            }
-        }
-
-        /// <summary>
         /// Adds a study instance uid to the move request.
         /// </summary>
         /// <param name="studyInstanceUid">The study instance uid.</param>

@@ -23,7 +23,6 @@
 #endregion
 
 using System;
-using System.Runtime.Remoting.Messaging;
 using ClearCanvas.Dicom.Iod.Modules;
 
 namespace ClearCanvas.Dicom.Network.Scu
@@ -126,39 +125,6 @@ namespace ClearCanvas.Dicom.Network.Scu
 			this._results = null;
 			Connect(clientAETitle, remoteAE, remoteHost, remotePort);
 			return PrinterModuleResults;
-		}
-
-		/// <summary>
-		/// Begins the get printer status in asynchronous mode.
-		/// </summary>
-		/// <param name="clientAETitle">The client AE title.</param>
-		/// <param name="remoteAE">The remote AE.</param>
-		/// <param name="remoteHost">The remote host.</param>
-		/// <param name="remotePort">The remote port.</param>
-		/// <param name="callback">The callback.</param>
-		/// <param name="asyncState">State of the async.</param>
-		/// <returns></returns>
-		public IAsyncResult BeginGetPrinterStatus(string clientAETitle, string remoteAE, string remoteHost, int remotePort, AsyncCallback callback, object asyncState)
-		{
-			GetPrinterStatusDelegate getPrinterStatusDelegate = new GetPrinterStatusDelegate(this.GetPrinterStatus);
-
-			return getPrinterStatusDelegate.BeginInvoke(clientAETitle, remoteAE, remoteHost, remotePort, callback, asyncState);
-		}
-
-		/// <summary>
-		/// Ends the get printer status.
-		/// </summary>
-		/// <param name="ar">The ar.</param>
-		/// <returns></returns>
-		public PrinterModuleIod EndGetPrinterStatus(IAsyncResult ar)
-		{
-			GetPrinterStatusDelegate getPrinterStatusDelegate = ((AsyncResult) ar).AsyncDelegate as GetPrinterStatusDelegate;
-			if (getPrinterStatusDelegate != null)
-			{
-				return getPrinterStatusDelegate.EndInvoke(ar) as PrinterModuleIod;
-			}
-			else
-				throw new InvalidOperationException("cannot get results, asynchresult is null");
 		}
 
 		#endregion

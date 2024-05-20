@@ -24,7 +24,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
 using ClearCanvas.Dicom.Iod.Iods;
 
 namespace ClearCanvas.Dicom.Network.Scu
@@ -84,57 +83,6 @@ namespace ClearCanvas.Dicom.Network.Scu
                 }
                 return results;
             }
-        }
-        #endregion
-
-        #region Public Methods
-        /// <summary>
-        /// Finds the specified modality worklist Iod.
-        /// </summary>
-        /// <param name="clientAETitle">The client AE title.</param>
-        /// <param name="remoteAE">The remote AE.</param>
-        /// <param name="remoteHost">The remote host.</param>
-        /// <param name="remotePort">The remote port.</param>
-        /// <param name="modalityWorklistIod">The modality worklist iod.</param>
-        /// <returns></returns>
-        public IList<ModalityWorklistIod> GetWorkList(string clientAETitle, string remoteAE, string remoteHost, int remotePort, ModalityWorklistIod modalityWorklistIod)
-        {
-			base.Find(clientAETitle, remoteAE, remoteHost, remotePort, modalityWorklistIod.DicomAttributeProvider as DicomAttributeCollection);
-            return this.ModalityWorklistResults;
-        }
-
-        /// <summary>
-        /// Begins the find request in asynchronous mode.
-        /// </summary>
-        /// <param name="clientAETitle">The client AE title.</param>
-        /// <param name="remoteAE">The remote AE.</param>
-        /// <param name="remoteHost">The remote host.</param>
-        /// <param name="remotePort">The remote port.</param>
-        /// <param name="requestAttributeCollection">The request attribute collection.</param>
-        /// <param name="callback">The callback.</param>
-        /// <param name="asyncState">State of the async.</param>
-        /// <returns></returns>
-        public IAsyncResult BeginGetWorkList(string clientAETitle, string remoteAE, string remoteHost, int remotePort, ModalityWorklistIod modalityWorklistIod, AsyncCallback callback, object asyncState)
-        {
-            ModalityWorklistDelegate modalityWorklistDelegate = new ModalityWorklistDelegate(this.GetWorkList);
-
-            return modalityWorklistDelegate.BeginInvoke(clientAETitle, remoteAE, remoteHost, remotePort, modalityWorklistIod, callback, asyncState);
-        }
-
-        /// <summary>
-        /// Ends the asyncronous findrequest.
-        /// </summary>
-        /// <param name="ar">The ar.</param>
-        /// <returns></returns>
-        public IList<ModalityWorklistIod> EndGetWorkList(IAsyncResult ar)
-        {
-            ModalityWorklistDelegate modalityWorklistDelegate = ((AsyncResult)ar).AsyncDelegate as ModalityWorklistDelegate;
-            if (modalityWorklistDelegate != null)
-            {
-                return modalityWorklistDelegate.EndInvoke(ar) as List<ModalityWorklistIod>;
-            }
-            else
-                throw new InvalidOperationException("cannot get results, asynchresult is null");
         }
         #endregion
 

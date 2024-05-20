@@ -23,7 +23,6 @@
 #endregion
 
 using System;
-using System.Runtime.Remoting.Messaging;
 using ClearCanvas.Common;
 
 namespace ClearCanvas.Dicom.Network.Scu
@@ -119,39 +118,6 @@ namespace ClearCanvas.Dicom.Network.Scu
 				return VerificationResult.AssociationRejected;
 			else
 				return _verificationResult;
-		}
-
-		/// <summary>
-		/// Begins the verification in asynchronous mode.
-		/// </summary>
-		/// <param name="clientAETitle">The client AE title.</param>
-		/// <param name="remoteAE">The remote AE.</param>
-		/// <param name="remoteHost">The remote host.</param>
-		/// <param name="remotePort">The remote port.</param>
-		/// <param name="callback">The callback.</param>
-		/// <param name="asyncState">State of the async.</param>
-		/// <returns></returns>
-		public IAsyncResult BeginVerify(string clientAETitle, string remoteAE, string remoteHost, int remotePort, AsyncCallback callback, object asyncState)
-		{
-			VerifyDelegate verifyDelegate = new VerifyDelegate(this.Verify);
-
-			return verifyDelegate.BeginInvoke(clientAETitle, remoteAE, remoteHost, remotePort, callback, asyncState);
-		}
-
-		/// <summary>
-		/// Call this to End the asyncronous verification request.
-		/// </summary>
-		/// <param name="ar">The ar.</param>
-		/// <returns></returns>
-		public VerificationResult EndVerify(IAsyncResult ar)
-		{
-			VerifyDelegate verifyDelegate = ((AsyncResult) ar).AsyncDelegate as VerifyDelegate;
-			if (verifyDelegate != null)
-			{
-				return verifyDelegate.EndInvoke(ar);
-			}
-			else
-				throw new InvalidOperationException("cannot get results, asynchresult is null");
 		}
 
 		#endregion

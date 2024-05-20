@@ -41,26 +41,10 @@ namespace ClearCanvas.Dicom.ServiceModel.Query
 		}
 
 		/// <summary>
-		/// Constructor - uses input configuration name to configure endpoint and bindings.
-		/// </summary>
-		public StudyRootQueryServiceClient(string endpointConfigurationName)
-			: base(endpointConfigurationName)
-		{
-		}
-
-		/// <summary>
 		/// Constructor - uses input endpoint and binding.
 		/// </summary>
 		public StudyRootQueryServiceClient(Binding binding, EndpointAddress remoteAddress)
 			: base(binding, remoteAddress)
-		{
-		}
-
-		/// <summary>
-		/// Constructor - uses input endpoint, loads bindings from given configuration name.
-		/// </summary>
-		public StudyRootQueryServiceClient(string endpointConfigurationName, EndpointAddress remoteAddress)
-			: base(endpointConfigurationName, remoteAddress)
 		{
 		}
 

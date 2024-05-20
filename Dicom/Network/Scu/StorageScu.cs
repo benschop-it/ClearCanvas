@@ -25,7 +25,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using ClearCanvas.Common;
@@ -336,32 +335,6 @@ namespace ClearCanvas.Dicom.Network.Scu
 		{
 			SendDelegate sendDelegate = Send;
 			return sendDelegate.BeginInvoke(callback, asyncState);
-		}
-
-		/// <summary>
-		/// Ends the send (asynchronous mode).  See the example in the class comment
-		/// for an example on how to use this.
-		/// </summary>
-		/// <param name="ar">The ar.</param>
-		public void EndSend(IAsyncResult ar)
-		{
-			try
-			{
-				var sendDelegate = ((AsyncResult) ar).AsyncDelegate as SendDelegate;
-
-				if (sendDelegate != null)
-				{
-					sendDelegate.EndInvoke(ar);
-				}
-				else
-				{
-					throw new InvalidOperationException("cannot end invoke, asynchresult is null");
-				}
-			}
-			catch (Exception e)
-			{
-				Platform.Log(LogLevel.Warn, e, "Unexpected exception when sending send operation in StorageScu, ignoring");
-			}
 		}
 
 		/// <summary>

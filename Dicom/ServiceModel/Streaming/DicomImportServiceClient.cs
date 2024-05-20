@@ -54,27 +54,12 @@ namespace ClearCanvas.Dicom.ServiceModel.Streaming
             Endpoint.Address = new EndpointAddress(uri);
         }
 
-        /// <summary>
-        /// Constructor - uses input configuration name to configure endpoint and bindings.
-        /// </summary>
-        public DicomImportServiceClient(string endpointConfigurationName)
-            : base(endpointConfigurationName)
-        {
-        }
 
         /// <summary>
         /// Constructor - uses input endpoint and binding.
         /// </summary>
         public DicomImportServiceClient(Binding binding, EndpointAddress remoteAddress)
             : base(binding, remoteAddress)
-        {
-        }
-
-        /// <summary>
-        /// Constructor - uses input endpoint, loads bindings from given configuration name.
-        /// </summary>
-        public DicomImportServiceClient(string endpointConfigurationName, EndpointAddress remoteAddress)
-            : base(endpointConfigurationName, remoteAddress)
         {
         }
 

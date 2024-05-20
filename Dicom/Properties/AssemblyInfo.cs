@@ -24,16 +24,6 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
-
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("ClearCanvas.Dicom")]
-[assembly: AssemblyDescription("DICOM Library")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ClearCanvas Inc.")]
-[assembly: AssemblyProduct("ClearCanvas Workstation")]
-[assembly: AssemblyCopyright("Copyright (c) 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -46,15 +36,3 @@ using System.Runtime.InteropServices;
 [assembly: Guid("1abe4325-fe45-4aaa-9bef-2646c15a27d8")]
 
 [assembly: ClearCanvas.Common.Plugin]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]

@@ -139,24 +139,6 @@ namespace ClearCanvas.Dicom.Network.Scu
 			return commitDelegate.BeginInvoke(callback, asyncState);
 		}
 
-		/// <summary>
-		/// Ends the storage commit (asynchronous mode).  See the example in the class comment
-		/// for an example on how to use this.
-		/// </summary>
-		/// <param name="ar">The ar.</param>
-		public void EndCommit(IAsyncResult ar)
-		{
-			CommitDelegate commitDelegate = ((System.Runtime.Remoting.Messaging.AsyncResult)ar).AsyncDelegate as CommitDelegate;
-
-			if (commitDelegate != null)
-			{
-				commitDelegate.EndInvoke(ar);
-			}
-			else
-			{
-				throw new InvalidOperationException("cannot end invoke, asynchresult is null");
-			}
-		}
 		#endregion
 
 		#region Protected Overridden Methods...

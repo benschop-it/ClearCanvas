@@ -114,7 +114,8 @@ namespace ClearCanvas.Dicom.ServiceModel.Query
 						            Description = "Failed to convert contract object to DicomAttributeCollection."
 					            };
 					Platform.Log(LogLevel.Error, e, fault.Description);
-					throw new FaultException<DataValidationFault>(fault, fault.Description);
+
+					throw new FaultException<DataValidationFault>(fault, new FaultReason(fault.Description));
 				}
 				catch (Exception e)
 				{
@@ -123,7 +124,7 @@ namespace ClearCanvas.Dicom.ServiceModel.Query
 						            Description = "Unexpected exception when converting contract object to DicomAttributeCollection."
 					            };
 					Platform.Log(LogLevel.Error, e, fault.Description);
-					throw new FaultException<DataValidationFault>(fault, fault.Description);
+					throw new FaultException<DataValidationFault>(fault, new FaultReason(fault.Description));
 				}
 				finally
 				{
@@ -191,7 +192,7 @@ namespace ClearCanvas.Dicom.ServiceModel.Query
 						                                        scu.FailureDescription ?? "no failure description provided")
 					            };
 					Platform.Log(LogLevel.Error, e, fault.Description);
-					throw new FaultException<QueryFailedFault>(fault, fault.Description);
+					throw new FaultException<QueryFailedFault>(fault, new FaultReason(fault.Description));;
 				}
 			}
 
@@ -217,7 +218,7 @@ namespace ClearCanvas.Dicom.ServiceModel.Query
 			else
 			{
 				var fault = new QueryFailedFault {Description = message};
-				throw new FaultException<QueryFailedFault>(fault, fault.Description);
+				throw new FaultException<QueryFailedFault>(fault, new FaultReason(fault.Description));
 			}
 		}
 	}
