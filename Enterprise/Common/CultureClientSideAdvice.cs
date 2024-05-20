@@ -1,6 +1,6 @@
 ﻿using System.ServiceModel;
 using System.Threading;
-using Castle.Core.Interceptor;
+using Castle.DynamicProxy;
 
 namespace ClearCanvas.Enterprise.Common
 {

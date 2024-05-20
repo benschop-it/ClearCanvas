@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using ClearCanvas.Common;
 using ClearCanvas.Common.Utilities;
+using ClearCanvas.Enterprise.Common.Porting;
 
 namespace ClearCanvas.Enterprise.Common
 {
@@ -241,6 +242,6 @@ namespace ClearCanvas.Enterprise.Common
 			return channel;
 		}
 
-		#endregion
-	}
+        #endregion
+    }
 }

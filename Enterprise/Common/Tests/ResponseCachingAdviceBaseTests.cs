@@ -31,9 +31,9 @@ using ClearCanvas.Enterprise.Common.Configuration;
 using NUnit.Framework;
 using ClearCanvas.Common;
 using ClearCanvas.Common.Caching;
-using Castle.Core.Interceptor;
 using System.Reflection;
 using ClearCanvas.Common.Utilities;
+using Castle.DynamicProxy;
 
 namespace ClearCanvas.Enterprise.Common.Tests
 {
@@ -228,8 +228,12 @@ namespace ClearCanvas.Enterprise.Common.Tests
 				throw new NotImplementedException();
 			}
 
-			#endregion
-		}
+            public IInvocationProceedInfo CaptureProceedInfo() {
+                throw new NotImplementedException();
+            }
+
+            #endregion
+        }
 		#endregion
 
 		#region ConcreteResponseCachingAdvice

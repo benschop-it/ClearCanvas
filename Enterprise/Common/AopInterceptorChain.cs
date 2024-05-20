@@ -25,7 +25,6 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Castle.Core.Interceptor;
 using Castle.DynamicProxy;
 
 namespace ClearCanvas.Enterprise.Common
@@ -153,7 +152,11 @@ namespace ClearCanvas.Enterprise.Common
 				return _rootInvocation.GetConcreteMethodInvocationTarget();
 			}
 
-			public object Proxy
+            public IInvocationProceedInfo CaptureProceedInfo() {
+                throw new NotImplementedException();
+            }
+
+            public object Proxy
 			{
 				get { return _rootInvocation.Proxy; }
 			}

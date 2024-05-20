@@ -22,6 +22,9 @@
 
 #endregion
 
+using ClearCanvas.Enterprise.Common.Porting;
+using CoreWCF.Collections.Generic;
+using CoreWCF.Description;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Description;
@@ -40,7 +43,11 @@ namespace ClearCanvas.Enterprise.Common.ServiceConfiguration.Server
 		/// </summary>
 		/// <param name="host"></param>
 		/// <param name="args"></param>
-		public void ConfigureServiceHost(ServiceHost host, ServiceHostConfigurationArgs args)
+		public void ConfigureServiceHost(
+			// TODO WCF server APIs are unsupported on .NET Core.
+			// Consider rewriting to use gRPC (https://docs.microsoft.com/dotnet/architecture/grpc-for-wcf-developers),
+			// ASP.NET Core, or CoreWCF (https://github.com/CoreWCF/CoreWCF) instead.
+			ServiceHost host, ServiceHostConfigurationArgs args)
 		{
 			var binding = new WSHttpBinding();
 			binding.MaxReceivedMessageSize = args.MaxReceivedMessageSize;
@@ -67,8 +74,10 @@ namespace ClearCanvas.Enterprise.Common.ServiceConfiguration.Server
 
 			//TODO (Rockstar): remove this after refactoring to do per-sop edits
 			foreach (var endpoint in host.Description.Endpoints)
-				foreach (var operation in endpoint.Contract.Operations)
-					operation.Behaviors.Find<DataContractSerializerOperationBehavior>().MaxItemsInObjectGraph = (int)Math.Min(int.MaxValue, args.MaxReceivedMessageSize);
+				foreach (CoreWCF.Description.OperationDescription operation in endpoint.Contract.Operations) {
+					var b = operation.OperationBehaviors as KeyedByTypeCollection<CoreWCF.Description.IOperationBehavior>;
+                    b.Find<CoreWCF.Description.DataContractSerializerOperationBehavior>().MaxItemsInObjectGraph = (int)Math.Min(int.MaxValue, args.MaxReceivedMessageSize);
+				}
 
 			// set up the certificate - required for WSHttpBinding
 			host.Credentials.ServiceCertificate.SetCertificate(

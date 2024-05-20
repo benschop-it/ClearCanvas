@@ -29,7 +29,6 @@ using ClearCanvas.Common;
 using ClearCanvas.Common.Utilities;
 using System.Security.Cryptography.X509Certificates;
 using Castle.DynamicProxy;
-using Castle.Core.Interceptor;
 using System.Collections.Generic;
 using ClearCanvas.Enterprise.Common.Configuration;
 

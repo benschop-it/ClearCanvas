@@ -24,9 +24,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.ServiceModel;
+using System.Text;
 using ClearCanvas.Common.Utilities;
+using ClearCanvas.Enterprise.Common.Porting;
 
 namespace ClearCanvas.Enterprise.Common
 {
@@ -83,8 +84,8 @@ namespace ClearCanvas.Enterprise.Common
             // Create the participant with the given endpoint configuration
             // Each participant opens a duplex channel to the mesh
             // participant is an instance of the chat application that has opened a channel to the mesh
-            DuplexChannelFactory<ITransactionNotifierChannel> factory = 
-                new DuplexChannelFactory<ITransactionNotifierChannel>(instanceContext, "ChatEndpoint");
+            System.ServiceModel.DuplexChannelFactory<ITransactionNotifierChannel> factory = 
+                new System.ServiceModel.DuplexChannelFactory<ITransactionNotifierChannel>(instanceContext, null, "ChatEndpoint"); //TODO PETER
 
             _channel = factory.CreateChannel();
 

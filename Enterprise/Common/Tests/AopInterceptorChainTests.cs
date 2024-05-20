@@ -25,8 +25,9 @@
 #if UNIT_TESTS
 
 using NUnit.Framework;
-using Castle.Core.Interceptor;
 using Castle.DynamicProxy;
+using System;
+using System.Reflection;
 
 namespace ClearCanvas.Enterprise.Common.Tests
 {
@@ -43,7 +44,7 @@ namespace ClearCanvas.Enterprise.Common.Tests
 		internal class TestInvocation : AbstractInvocation, IInvocation
 		{
 			public TestInvocation()
-				: base(null, null, null, null, null, new object[] { })
+				: base(null, null, null, new object[] { })
 			{
 			}
 
@@ -61,7 +62,13 @@ namespace ClearCanvas.Enterprise.Common.Tests
 				get { return InvokeCount > 0; }
 			}
 
-			protected override void InvokeMethodOnTarget()
+            public override object InvocationTarget => throw new NotImplementedException();
+
+            public override Type TargetType => throw new NotImplementedException();
+
+            public override MethodInfo MethodInvocationTarget => throw new NotImplementedException();
+
+            protected override void InvokeMethodOnTarget()
 			{
 				InvokeCount++;
 			}

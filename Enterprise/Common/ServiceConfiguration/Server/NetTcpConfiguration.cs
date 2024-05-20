@@ -24,8 +24,8 @@
 
 using System;
 using System.ServiceModel;
-using System.ServiceModel.Description;
 using ClearCanvas.Common;
+using ClearCanvas.Enterprise.Common.Porting;
 
 namespace ClearCanvas.Enterprise.Common.ServiceConfiguration.Server
 {
@@ -41,7 +41,11 @@ namespace ClearCanvas.Enterprise.Common.ServiceConfiguration.Server
 		/// </summary>
 		/// <param name="host"></param>
 		/// <param name="args"></param>
-		public void ConfigureServiceHost(ServiceHost host, ServiceHostConfigurationArgs args)
+		public void ConfigureServiceHost(
+			// TODO WCF server APIs are unsupported on .NET Core.
+			// Consider rewriting to use gRPC (https://docs.microsoft.com/dotnet/architecture/grpc-for-wcf-developers),
+			// ASP.NET Core, or CoreWCF (https://github.com/CoreWCF/CoreWCF) instead.
+			ServiceHost host, ServiceHostConfigurationArgs args)
 		{
 			var binding = new NetTcpBinding
 				{

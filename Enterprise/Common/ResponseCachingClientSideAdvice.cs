@@ -22,7 +22,7 @@
 
 #endregion
 
-using Castle.Core.Interceptor;
+using Castle.DynamicProxy;
 using System.ServiceModel;
 using ClearCanvas.Common.Caching;
 
