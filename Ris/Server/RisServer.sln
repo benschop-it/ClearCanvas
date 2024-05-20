@@ -12,9 +12,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Healthcare", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Healthcare.Hibernate", "..\..\Healthcare\Hibernate\ClearCanvas.Healthcare.Hibernate.csproj", "{FFBEB9C1-2E09-4A9E-A863-B104CFDC55F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Workflow", "..\..\Workflow\ClearCanvas.Workflow.csproj", "{576C4A35-B314-49D0-BF53-4BD43D8D1F31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Workflow", "..\..\Workflow\ClearCanvas.Workflow.csproj", "{576C4A35-B314-49D0-BF53-4BD43D8D1F31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Workflow.Hibernate", "..\..\Workflow\Hibernate\ClearCanvas.Workflow.Hibernate.csproj", "{8B6F26E3-F067-414E-BEAA-F27481E0EFE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Workflow.Hibernate", "..\..\Workflow\Hibernate\ClearCanvas.Workflow.Hibernate.csproj", "{8B6F26E3-F067-414E-BEAA-F27481E0EFE0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Configuration", "..\..\Enterprise\Configuration\ClearCanvas.Enterprise.Configuration.csproj", "{487A1D60-7FD7-4EBB-8EF2-2E0FA49652FD}"
 EndProject
@@ -86,7 +86,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Server.ShredHos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Shreds", "..\Shreds\ClearCanvas.Ris.Shreds.csproj", "{EE5C649B-3AF6-4000-A590-335288A0EBD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Dicom", "..\..\Dicom\ClearCanvas.Dicom.csproj", "{AD9ECE2B-8268-4115-8DC8-860FBD011FFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Dicom", "..\..\Dicom\ClearCanvas.Dicom.csproj", "{AD9ECE2B-8268-4115-8DC8-860FBD011FFF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Utilities.Manifest", "..\..\Utilities\Manifest\ClearCanvas.Utilities.Manifest.csproj", "{E2F1A5D4-73A4-4BA6-AA5A-87BBDEC727F8}"
 EndProject
