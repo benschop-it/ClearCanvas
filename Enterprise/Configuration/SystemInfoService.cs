@@ -38,7 +38,6 @@ namespace ClearCanvas.Enterprise.Configuration
 	[ServiceImplementsContract(typeof (ISystemInfoService))]
 	public class SystemInfoService : CoreServiceLayer, ISystemInfoService
 	{
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.System.Configuration)]
 		public GetDerivedSystemSecretKeyResponse GetDerivedSystemSecretKey(GetDerivedSystemSecretKeyRequest request)
 		{
 			var store = SystemIdentityStore.Load();

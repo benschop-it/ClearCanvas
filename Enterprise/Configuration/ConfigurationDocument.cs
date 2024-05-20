@@ -28,7 +28,6 @@ using System.Collections.Generic;
 
 using System.Text;
 
-using Iesi.Collections;
 using ClearCanvas.Enterprise.Core;
 using ClearCanvas.Enterprise.Core.Modelling;
 using ClearCanvas.Common;
