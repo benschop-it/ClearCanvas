@@ -33,6 +33,7 @@ using ClearCanvas.Common.Utilities;
 using Iesi.Collections.Generic;
 using ClearCanvas.Enterprise.Common;
 using System.Threading;
+using System.Linq;
 
 namespace ClearCanvas.Enterprise.Authentication.Tests
 {
@@ -74,10 +75,10 @@ namespace ClearCanvas.Enterprise.Authentication.Tests
 			Assert.IsNull(userInfo.ValidUntil);
 
 			// no authority groups
-			Assert.IsTrue(user.AuthorityGroups.IsEmpty);
+			Assert.IsTrue(user.AuthorityGroups.Count == 0);
 
 			// no sessions
-			Assert.IsTrue(user.Sessions.IsEmpty);
+			Assert.IsTrue(user.Sessions.Count == 0);
 
 			// password
 			Assert.IsNotNull(user.Password);
@@ -129,7 +130,7 @@ namespace ClearCanvas.Enterprise.Authentication.Tests
 
 			AuthorityGroup group1 = new AuthorityGroup();
 			AuthorityGroup group2 = new AuthorityGroup();
-			HashedSet<AuthorityGroup> groups = new HashedSet<AuthorityGroup>();
+			HashSet<AuthorityGroup> groups = new HashSet<AuthorityGroup>();
 			groups.Add(group1);
 			groups.Add(group2);
 
@@ -150,10 +151,10 @@ namespace ClearCanvas.Enterprise.Authentication.Tests
 
 			// groups
 			Assert.AreEqual(2, user.AuthorityGroups.Count);
-			Assert.IsTrue(user.AuthorityGroups.ContainsAll(groups));
-		}
+            Assert.IsTrue(groups.All(group => user.AuthorityGroups.Contains(group)));
+        }
 
-		[Test]
+        [Test]
 		[ExpectedException(typeof(ArgumentNullException))]
 		public void Test_CreateNewUser_NullUserName()
 		{
@@ -368,7 +369,7 @@ namespace ClearCanvas.Enterprise.Authentication.Tests
 
 			// no previous login time, no sessions
 			Assert.IsNull(user.LastLoginTime);
-			Assert.IsTrue(user.Sessions.IsEmpty);
+			Assert.IsTrue(user.Sessions.Count == 0);
 
 			string app = "app";
 			string host = "host";
@@ -567,7 +568,7 @@ namespace ClearCanvas.Enterprise.Authentication.Tests
 
 			// no previous login time, no sessions
 			Assert.IsNull(user.LastLoginTime);
-			Assert.IsTrue(user.Sessions.IsEmpty);
+			Assert.IsTrue(user.Sessions.Count == 0);
 
 			string app = "app";
 			string host = "host";
@@ -582,10 +583,10 @@ namespace ClearCanvas.Enterprise.Authentication.Tests
 
 			// all sessions are active
 			Assert.AreEqual(4, user.Sessions.Count);
-			Assert.IsTrue(user.Sessions.ContainsAll(sessions));
+            Assert.IsTrue(sessions.All(session => user.Sessions.Contains(session)));
 
-			// before any sessions expire, this should return an empty list
-			List<UserSession> expiredSessions = user.TerminateExpiredSessions();
+            // before any sessions expire, this should return an empty list
+            List<UserSession> expiredSessions = user.TerminateExpiredSessions();
 			Assert.AreEqual(0, expiredSessions.Count);
 
 			// wait for all but 1 session to expire

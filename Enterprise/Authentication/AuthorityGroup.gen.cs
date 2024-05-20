@@ -30,9 +30,9 @@ namespace ClearCanvas.Enterprise.Authentication
 	  	
 	  	private bool _dataGroup;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.AuthorityToken> _authorityTokens;
+	  	private ISet<ClearCanvas.Enterprise.Authentication.AuthorityToken> _authorityTokens;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.User> _users;
+	  	private ISet<ClearCanvas.Enterprise.Authentication.User> _users;
 	  	
 	  	
 	  	#endregion
@@ -45,9 +45,9 @@ namespace ClearCanvas.Enterprise.Authentication
 	  	public AuthorityGroup()
 	  	{
 		 	
-		  	_authorityTokens = new HashedSet<ClearCanvas.Enterprise.Authentication.AuthorityToken>();
+		  	_authorityTokens = new HashSet<ClearCanvas.Enterprise.Authentication.AuthorityToken>();
 		  	
-		  	_users = new HashedSet<ClearCanvas.Enterprise.Authentication.User>();
+		  	_users = new HashSet<ClearCanvas.Enterprise.Authentication.User>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -57,7 +57,7 @@ namespace ClearCanvas.Enterprise.Authentication
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public AuthorityGroup(string name1, string description1, bool builtin1, bool datagroup1, Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.AuthorityToken> authoritytokens1, Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.User> users1)
+	  	public AuthorityGroup(string name1, string description1, bool builtin1, bool datagroup1, ISet<ClearCanvas.Enterprise.Authentication.AuthorityToken> authoritytokens1, ISet<ClearCanvas.Enterprise.Authentication.User> users1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -148,7 +148,7 @@ namespace ClearCanvas.Enterprise.Authentication
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.AuthorityToken> AuthorityTokens
+	  	public virtual ISet<ClearCanvas.Enterprise.Authentication.AuthorityToken> AuthorityTokens
 	  	{
 			
 			get { return _authorityTokens; }
@@ -160,7 +160,7 @@ namespace ClearCanvas.Enterprise.Authentication
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.User> Users
+	  	public virtual ISet<ClearCanvas.Enterprise.Authentication.User> Users
 	  	{
 			
 			get { return _users; }

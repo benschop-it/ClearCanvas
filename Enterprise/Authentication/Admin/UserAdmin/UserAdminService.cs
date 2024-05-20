@@ -119,7 +119,7 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.UserAdmin
 				userDetail.ValidUntil);
 
 			var password = GetNewAccountPassword(accountType, request.Password);
-			var user = User.CreateNewUser(userInfo, password, new HashedSet<AuthorityGroup>());
+			var user = User.CreateNewUser(userInfo, password, new HashSet<AuthorityGroup>());
 
 			// copy other info such as authority groups from request
 			var assembler = new UserAssembler();

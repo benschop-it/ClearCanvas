@@ -47,7 +47,7 @@ namespace ClearCanvas.Enterprise.Authentication
 		/// <param name="initialPassword"></param>
 		/// <param name="authorityGroups"></param>
 		/// <returns></returns>
-		public static User CreateNewUser(UserInfo userInfo, Password initialPassword, Iesi.Collections.Generic.ISet<AuthorityGroup> authorityGroups)
+		public static User CreateNewUser(UserInfo userInfo, Password initialPassword, ISet<AuthorityGroup> authorityGroups)
 		{
 			Platform.CheckForNullReference(userInfo, "userInfo");
 			Platform.CheckForNullReference(initialPassword, "initialPassword");
@@ -68,7 +68,7 @@ namespace ClearCanvas.Enterprise.Authentication
 				null, // last login time
 				userInfo.EmailAddress,
 				authorityGroups,
-				new HashedSet<UserSession>()  // empty session collection
+				new HashSet<UserSession>()  // empty session collection
 				);
 		}
 
@@ -80,7 +80,7 @@ namespace ClearCanvas.Enterprise.Authentication
 		/// <returns></returns>
 		public static User CreateNewUser(UserInfo userInfo, string temporaryPassword)
 		{
-			return CreateNewUser(userInfo, Password.CreateTemporaryPassword(temporaryPassword), new HashedSet<AuthorityGroup>());
+			return CreateNewUser(userInfo, Password.CreateTemporaryPassword(temporaryPassword), new HashSet<AuthorityGroup>());
 		}
 
 		/// <summary>

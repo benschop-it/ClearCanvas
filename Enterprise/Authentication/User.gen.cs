@@ -42,9 +42,9 @@ namespace ClearCanvas.Enterprise.Authentication
 	  	
 	  	private string _emailAddress;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.AuthorityGroup> _authorityGroups;
+	  	private ISet<ClearCanvas.Enterprise.Authentication.AuthorityGroup> _authorityGroups;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.UserSession> _sessions;
+	  	private ISet<ClearCanvas.Enterprise.Authentication.UserSession> _sessions;
 	  	
 	  	
 	  	#endregion
@@ -61,9 +61,9 @@ namespace ClearCanvas.Enterprise.Authentication
 		  	
 		  	_creationTime = Platform.Time;
 		  	
-		  	_authorityGroups = new HashedSet<ClearCanvas.Enterprise.Authentication.AuthorityGroup>();
+		  	_authorityGroups = new HashSet<ClearCanvas.Enterprise.Authentication.AuthorityGroup>();
 		  	
-		  	_sessions = new HashedSet<ClearCanvas.Enterprise.Authentication.UserSession>();
+		  	_sessions = new HashSet<ClearCanvas.Enterprise.Authentication.UserSession>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -73,7 +73,7 @@ namespace ClearCanvas.Enterprise.Authentication
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public User(string username1, ClearCanvas.Enterprise.Authentication.UserAccountType accounttype1, ClearCanvas.Enterprise.Authentication.Password password1, string displayname1, DateTime? validfrom1, DateTime? validuntil1, bool enabled1, DateTime creationtime1, DateTime? lastlogintime1, string emailaddress1, Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.AuthorityGroup> authoritygroups1, Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.UserSession> sessions1)
+	  	public User(string username1, ClearCanvas.Enterprise.Authentication.UserAccountType accounttype1, ClearCanvas.Enterprise.Authentication.Password password1, string displayname1, DateTime? validfrom1, DateTime? validuntil1, bool enabled1, DateTime creationtime1, DateTime? lastlogintime1, string emailaddress1, ISet<ClearCanvas.Enterprise.Authentication.AuthorityGroup> authoritygroups1, ISet<ClearCanvas.Enterprise.Authentication.UserSession> sessions1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -252,7 +252,7 @@ namespace ClearCanvas.Enterprise.Authentication
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.AuthorityGroup> AuthorityGroups
+	  	public virtual ISet<ClearCanvas.Enterprise.Authentication.AuthorityGroup> AuthorityGroups
 	  	{
 			
 			get { return _authorityGroups; }
@@ -266,7 +266,7 @@ namespace ClearCanvas.Enterprise.Authentication
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Enterprise.Authentication.UserSession> Sessions
+	  	public virtual ISet<ClearCanvas.Enterprise.Authentication.UserSession> Sessions
 	  	{
 			
 			get { return _sessions; }

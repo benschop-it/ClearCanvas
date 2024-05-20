@@ -77,7 +77,9 @@ namespace ClearCanvas.Enterprise.Authentication.Admin
 				where.Name.In(tokenNames);
 				var authTokens = persistenceContext.GetBroker<IAuthorityTokenBroker>().Find(where);
 
-				authorityGroup.AuthorityTokens.AddAll(authTokens);
+				foreach (var token in authTokens) {
+					authorityGroup.AuthorityTokens.Add(token);
+				}
 			}
 		}
 	}

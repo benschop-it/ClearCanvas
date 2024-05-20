@@ -26,6 +26,7 @@ using System;
 using System.Web.Security;
 using ClearCanvas.Common;
 using ClearCanvas.Enterprise.Authentication.Brokers;
+using ClearCanvas.Enterprise.Authentication.Porting;
 using ClearCanvas.Enterprise.Common;
 using ClearCanvas.Enterprise.Common.Authentication;
 using ClearCanvas.Enterprise.Common.Mail;
@@ -110,7 +111,9 @@ namespace ClearCanvas.Enterprise.Authentication
 			}
 
 			// Just use the .NET routine
-			var newPassword = Membership.GeneratePassword(8, 1);
+			// TODO ASP.NET membership should be replaced with ASP.NET Core identity.
+			// For more details see https://docs.microsoft.com/aspnet/core/migration/proper-to-2x/membership-to-core-identity.
+			var newPassword = PasswordGenerator.GeneratePassword(8, 1);
 
 			var expiryTime = Platform.Time;
 

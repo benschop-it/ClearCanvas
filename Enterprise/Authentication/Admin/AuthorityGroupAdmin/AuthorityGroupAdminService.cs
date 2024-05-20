@@ -42,8 +42,6 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.AuthorityGroupAdmin
 		#region IAuthorityGroupAdminService Members
 
 		[ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Security.AuthorityGroup)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Security.User)]
 		public ListAuthorityGroupsResponse ListAuthorityGroups(ListAuthorityGroupsRequest request)
 		{
 			var criteria = new AuthorityGroupSearchCriteria();
@@ -72,7 +70,6 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.AuthorityGroupAdmin
 		}
 
 		[ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Security.AuthorityGroup)]
 		public LoadAuthorityGroupForEditResponse LoadAuthorityGroupForEdit(LoadAuthorityGroupForEditRequest request)
 		{
 			var authorityGroup = PersistenceContext.Load<AuthorityGroup>(request.AuthorityGroupRef);
@@ -81,7 +78,6 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.AuthorityGroupAdmin
 		}
 
 		[ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Security.AuthorityGroup)]
 		public ListAuthorityTokensResponse ListAuthorityTokens(ListAuthorityTokensRequest request)
 		{
 			var assembler = new AuthorityTokenAssembler();
@@ -93,7 +89,6 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.AuthorityGroupAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Security.AuthorityGroup)]
 		public AddAuthorityGroupResponse AddAuthorityGroup(AddAuthorityGroupRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -117,7 +112,6 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.AuthorityGroupAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Security.AuthorityGroup)]
 		public UpdateAuthorityGroupResponse UpdateAuthorityGroup(UpdateAuthorityGroupRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -147,7 +141,6 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.AuthorityGroupAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Security.AuthorityGroup)]
 		public DeleteAuthorityGroupResponse DeleteAuthorityGroup(DeleteAuthorityGroupRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -179,7 +172,6 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.AuthorityGroupAdmin
 
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Security.AuthorityGroup)]
 		public ImportAuthorityTokensResponse ImportAuthorityTokens(ImportAuthorityTokensRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -199,7 +191,6 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.AuthorityGroupAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Security.AuthorityGroup)]
 		public ImportAuthorityGroupsResponse ImportAuthorityGroups(ImportAuthorityGroupsRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");

@@ -114,7 +114,7 @@ namespace ClearCanvas.Enterprise.Authentication.Setup
 			}
 			catch (EntityNotFoundException)
 			{
-				var groups = new HashedSet<AuthorityGroup> { adminGroup };
+				var groups = new HashSet<AuthorityGroup> { adminGroup };
 
 				// create sa user using initial password, set to expire never
 				var saUser = User.CreateNewUser(

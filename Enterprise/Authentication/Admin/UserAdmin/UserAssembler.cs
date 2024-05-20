@@ -97,7 +97,10 @@ namespace ClearCanvas.Enterprise.Authentication.Admin.UserAdmin
 				(AuthorityGroupSummary group) => context.Load<AuthorityGroup>(group.AuthorityGroupRef, EntityLoadFlags.Proxy));
 
 			user.AuthorityGroups.Clear();
-			user.AuthorityGroups.AddAll(authGroups);
+
+			foreach (var authorityGroup in authGroups) {
+				user.AuthorityGroups.Add(authorityGroup);
+			}
 		}
 
 		internal UserSessionSummary GetUserSessionSummary(UserSession session)
