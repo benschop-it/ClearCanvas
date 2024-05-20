@@ -66,7 +66,7 @@ namespace ClearCanvas.Workflow.Tests
             Assert.IsTrue(RoughlyEqual(Platform.Time, activity.CreationTime));
             Assert.IsNotNull(activity.Scheduling);
             Assert.IsNotNull(activity.PerformedSteps);
-            Assert.IsTrue(activity.PerformedSteps.IsEmpty);
+            Assert.IsTrue(activity.PerformedSteps.Count == 0);
         }
 
         [Test]
@@ -352,8 +352,8 @@ namespace ClearCanvas.Workflow.Tests
             ConcreteActivity activity = new ConcreteActivity();
             ConcretePerformedStep performedStep = new ConcretePerformedStep();
 
-            Assert.IsTrue(activity.PerformedSteps.IsEmpty);
-            Assert.IsTrue(performedStep.Activities.IsEmpty);
+            Assert.IsTrue(activity.PerformedSteps.Count == 0);
+            Assert.IsTrue(performedStep.Activities.Count == 0);
 
             activity.AddPerformedStep(performedStep);// Perform event
 
@@ -379,8 +379,8 @@ namespace ClearCanvas.Workflow.Tests
             activity.RemovePerformedStep(performedStep);// Perform event
 
             // Make assertions
-            Assert.IsTrue(activity.PerformedSteps.IsEmpty);
-            Assert.IsTrue(performedStep.Activities.IsEmpty);
+            Assert.IsTrue(activity.PerformedSteps.Count == 0);
+            Assert.IsTrue(performedStep.Activities.Count == 0);
         }
 
         [Test]
