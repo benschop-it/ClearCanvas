@@ -25,13 +25,15 @@
 using System;
 using System.Globalization;
 using System.IO;
+using System.Runtime.Versioning;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Threading;
 
 namespace ClearCanvas.Common.Utilities
 {
-	public class NamedMutexLock : ExclusiveLock
+    [SupportedOSPlatform("windows")]
+    public class NamedMutexLock : ExclusiveLock
 	{
 		private readonly string _name;
 		private readonly Mutex _mutex;
@@ -61,17 +63,30 @@ namespace ClearCanvas.Common.Utilities
 				mSec.AddAccessRule(rule);
 
 				bool mutexWasCreated;
-				return new Mutex(false, name, out mutexWasCreated, mSec);
+				var mutex = new Mutex(false, name, out mutexWasCreated);
+                mutex.SetAccessControl(mSec);
+				return mutex;
 			}
 			catch (UnauthorizedAccessException)
 			{
 				// The named mutex exists, but the user does not have the security access required to use it.
 				try
 				{
-					var mutex = Mutex.OpenExisting(name, MutexRights.ReadPermissions | MutexRights.ChangePermissions);
+					var mutex = Mutex.OpenExisting(name);
 
-					// Get the current ACL. This requires MutexRights.ReadPermissions.
-					MutexSecurity mSec = mutex.GetAccessControl();
+                    // Get the current security settings of the mutex
+                    MutexSecurity security = mutex.GetAccessControl();
+
+                    // Modify the security settings as needed
+                    SecurityIdentifier sid = new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null);
+                    MutexAccessRule accessRule = new MutexAccessRule(sid, MutexRights.ReadPermissions | MutexRights.ChangePermissions, AccessControlType.Allow);
+                    security.AddAccessRule(accessRule);
+
+                    // Apply the new security settings to the mutex
+                    mutex.SetAccessControl(security);
+
+                    // Get the current ACL. This requires MutexRights.ReadPermissions.
+                    MutexSecurity mSec = mutex.GetAccessControl();
 
 					// Now grant the user the correct rights.
 					MutexAccessRule rule = new MutexAccessRule(

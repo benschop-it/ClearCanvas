@@ -44,29 +44,10 @@ namespace ClearCanvas.Common.UsageTracking
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="endpointConfigurationName">Endpoint configuration name.</param>
-        public UsageTrackingServiceClient(string endpointConfigurationName)
-            : base(endpointConfigurationName)
-        {
-        }
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
         /// <param name="binding">Binding for the service.</param>
         /// <param name="remoteAddress">Remote address.</param>
         public UsageTrackingServiceClient(Binding binding, EndpointAddress remoteAddress)
             : base(binding, remoteAddress)
-        {
-        }
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="endpointConfigurationName">Binding configuration name.</param>
-        /// <param name="remoteAddress">Remote address.</param>
-        public UsageTrackingServiceClient(string endpointConfigurationName, EndpointAddress remoteAddress)
-            : base(endpointConfigurationName, remoteAddress)
         {
         }
 

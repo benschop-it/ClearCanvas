@@ -41,6 +41,7 @@ using log4net.Layout;
 using log4net.Util;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using System.Runtime.Versioning;
 
 namespace ClearCanvas.Common.log4net
 {
@@ -540,6 +541,7 @@ namespace ClearCanvas.Common.log4net
         ///Class that represents a mutex based locking
         ///model
         ///</summary>
+        [SupportedOSPlatform("windows")]
         public class MutexLock : LockingModelBase, IDisposable
         {
             private string m_filename;
@@ -721,7 +723,8 @@ namespace ClearCanvas.Common.log4net
                     mSec.AddAccessRule(rule);
 
                 	bool mutexWasCreated;
-                	m_mutex = new Mutex(false, m_mutexname, out mutexWasCreated, mSec);
+                	m_mutex = new Mutex(false, m_mutexname, out mutexWasCreated);
+                    m_mutex.SetAccessControl(mSec);
                 }
                 catch (UnauthorizedAccessException)
                 {
@@ -729,7 +732,17 @@ namespace ClearCanvas.Common.log4net
                     LogLog.Warn(typeof(FileAppender), "The named mutex exists, but the user does not have the security access required to use it.");
                     try
                     {
-                        m_mutex = Mutex.OpenExisting(m_mutexname, MutexRights.ReadPermissions | MutexRights.ChangePermissions);
+                        m_mutex = Mutex.OpenExisting(m_mutexname);
+                        // Get the current security settings of the mutex
+                        MutexSecurity security = m_mutex.GetAccessControl();
+
+                        // Modify the security settings as needed
+                        SecurityIdentifier sid = new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null);
+                        MutexAccessRule accessRule = new MutexAccessRule(sid, MutexRights.ReadPermissions | MutexRights.ChangePermissions, AccessControlType.Allow);
+                        security.AddAccessRule(accessRule);
+
+                        // Apply the new security settings to the mutex
+                        m_mutex.SetAccessControl(security);
 
                         // Get the current ACL. This requires MutexRights.ReadPermissions.
                         MutexSecurity mSec = m_mutex.GetAccessControl();

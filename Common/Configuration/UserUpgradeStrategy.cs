@@ -31,6 +31,7 @@ using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Security.Policy;
+using System.Text;
 using ClearCanvas.Common.Utilities;
 
 namespace ClearCanvas.Common.Configuration
@@ -98,14 +99,6 @@ namespace ClearCanvas.Common.Configuration
 				return;
 
 			IsRunning = true;
-
-			// if we know of an alternate app settings folder where a user.config might be found in previous versions, try to migrate it if necessary
-			var formerAppConfigFolder = GetAlternateAppSettingsFolder();
-			if (!string.IsNullOrWhiteSpace(formerAppConfigFolder))
-			{
-				MigrateFormerAppConfigFile(true, formerAppConfigFolder);
-				MigrateFormerAppConfigFile(false, formerAppConfigFolder);
-			}
 
 			foreach (UserUpgradeStep step in Steps)
 			{
@@ -197,70 +190,6 @@ namespace ClearCanvas.Common.Configuration
 		}
 
 		/// <summary>
-		/// Determines an alternate application settings folder for the current app domain.
-		/// </summary>
-		private static string GetAlternateAppSettingsFolder()
-		{
-			try
-			{
-				var appDomainEvidence = AppDomain.CurrentDomain.Evidence;
-				var configurationFilePath = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath;
-				var previousInstallDir = UpgradeSettings.Default.PreviousInstallDir;
-				return GetAlternateAppSettingsFolder(previousInstallDir, appDomainEvidence, configurationFilePath);
-			}
-			catch (Exception ex)
-			{
-				// if any exception is thrown, just log and continue
-				Platform.Log(LogLevel.Debug, ex, "Failure while attempting to determine an alternate application settings directory");
-				return null;
-			}
-		}
-
-		/// <summary>
-		/// Determines an alternate application settings folder for the provided details. (This overload really only exists for unit test purposes)
-		/// </summary>
-		internal static string GetAlternateAppSettingsFolder(string previousInstallDir, Evidence appDomainEvidence, string configurationFilePath)
-		{
-			try
-			{
-                //NOTE: the GetHostEvidence<T> method is not implemented on Mono, and this will throw an exception.
-
-				// if the strong name evidence is available for the appdomain, it would've been used and there wouldn't be an 'alternate'
-				if (appDomainEvidence.GetHostEvidence<StrongName>() != null) return null;
-
-				// get the current app settings folder name
-				var currentAppConfigFolder = Path.GetFileName(Path.GetDirectoryName(Path.GetDirectoryName(configurationFilePath)));
-				if (string.IsNullOrWhiteSpace(currentAppConfigFolder) || currentAppConfigFolder.Length <= 32) return null;
-
-				// check that it uses the 'Url' type and strip off the hash
-				var baseAppConfigFolder = currentAppConfigFolder.Substring(0, currentAppConfigFolder.Length - 32);
-				if (!baseAppConfigFolder.EndsWith("_Url_", StringComparison.InvariantCultureIgnoreCase)) return null;
-
-				// get the url evidence for the appdomain
-				var urlEvidence = appDomainEvidence.GetHostEvidence<Url>();
-				if (urlEvidence == null) return null;
-
-				// if a previous install directory is known, figure out what the url evidence would have looked like for the same executable in that directory
-				// otherwise, just assume it would be same as the current url evidence
-				var evidenceInfo = string.IsNullOrWhiteSpace(previousInstallDir) ? urlEvidence.Value : "file:///" + previousInstallDir.TrimEnd('/', '\\') + '/' + Path.GetFileName(new Uri(urlEvidence.Value).LocalPath);
-
-				// normalize the evidence info: this is what changed between CLR 2.0 and 4.0 - the choice of slash type!
-				// if the slash behavior changes again in a future CLR, this code may need to be modified to compute and try multiple possibilities
-				evidenceInfo = evidenceInfo.Replace('\\', '/').ToUpperInvariant();
-
-				// now concatenate the base folder name with the evidence hash to get the 'alternate' folder name, and return it if it's actually different
-				var formerAppConfigFolder = baseAppConfigFolder + ComputeEvidenceHash(evidenceInfo);
-				return formerAppConfigFolder != currentAppConfigFolder ? formerAppConfigFolder : null;
-			}
-			catch (Exception ex)
-			{
-				// if any exception is thrown, just log and continue
-				Platform.Log(LogLevel.Debug, ex, "Failure while attempting to determine an alternate application settings directory");
-				return null;
-			}
-		}
-
-		/// <summary>
 		/// Takes the SHA-1 hash of the evidence info and generates a Base32 string exactly as .NET computes it
 		/// </summary>
 		internal static string ComputeEvidenceHash(string evidenceInfo)
@@ -271,25 +200,27 @@ namespace ClearCanvas.Common.Configuration
 			const int maskHigh3Bits = 224; // 11100000
 			const int maskHigh1Bit = 128; //  10000000
 
-			using (var ms = new MemoryStream())
-			using (var sha1 = new SHA1CryptoServiceProvider())
-			{
-				new BinaryFormatter().Serialize(ms, evidenceInfo); // serialize the evidence string to binary form
-				var hash = sha1.ComputeHash(ms.ToArray()); // a SHA1 hash has 20 bytes
-				var base32String = new char[20*8/5]; // Base32 is 5 bits per char
-				for (var n = 0; n < 4; ++n) // process in 4 blocks of 5 bytes (= 8 Base32 digits)
-				{
-					byte b0 = hash[5*n + 0], b1 = hash[5*n + 1], b2 = hash[5*n + 2], b3 = hash[5*n + 3], b4 = hash[5*n + 4];
-					base32String[8*n + 0] = base32Alphabet[b0 & maskLow5Bits];
-					base32String[8*n + 1] = base32Alphabet[b1 & maskLow5Bits];
-					base32String[8*n + 2] = base32Alphabet[b2 & maskLow5Bits];
-					base32String[8*n + 3] = base32Alphabet[b3 & maskLow5Bits];
-					base32String[8*n + 4] = base32Alphabet[b4 & maskLow5Bits];
-					base32String[8*n + 5] = base32Alphabet[(b0 & maskHigh3Bits) >> 5 | (b3 & maskMid2Bits) >> 2];
-					base32String[8*n + 6] = base32Alphabet[(b1 & maskHigh3Bits) >> 5 | (b4 & maskMid2Bits) >> 2];
-					base32String[8*n + 7] = base32Alphabet[(b2 & maskHigh3Bits) >> 5 | (b3 & maskHigh1Bit) >> 4 | (b4 & maskHigh1Bit) >> 3];
-				}
-				return new string(base32String);
+			using (var ms = new MemoryStream()) {
+				using (var sha1 = new SHA1CryptoServiceProvider()) {
+                    // Serialize the evidence string to binary form using UTF8Encoding
+                    var evidenceBytes = Encoding.UTF8.GetBytes(evidenceInfo);
+                    var hash = sha1.ComputeHash(evidenceBytes); // a SHA1 hash has 20 bytes
+
+                    var base32String = new char[20 * 8 / 5]; // Base32 is 5 bits per char
+                    for (var n = 0; n < 4; ++n) // process in 4 blocks of 5 bytes (= 8 Base32 digits)
+                    {
+                        byte b0 = hash[5 * n + 0], b1 = hash[5 * n + 1], b2 = hash[5 * n + 2], b3 = hash[5 * n + 3], b4 = hash[5 * n + 4];
+                        base32String[8 * n + 0] = base32Alphabet[b0 & maskLow5Bits];
+                        base32String[8 * n + 1] = base32Alphabet[b1 & maskLow5Bits];
+                        base32String[8 * n + 2] = base32Alphabet[b2 & maskLow5Bits];
+                        base32String[8 * n + 3] = base32Alphabet[b3 & maskLow5Bits];
+                        base32String[8 * n + 4] = base32Alphabet[b4 & maskLow5Bits];
+                        base32String[8 * n + 5] = base32Alphabet[(b0 & maskHigh3Bits) >> 5 | (b3 & maskMid2Bits) >> 2];
+                        base32String[8 * n + 6] = base32Alphabet[(b1 & maskHigh3Bits) >> 5 | (b4 & maskMid2Bits) >> 2];
+                        base32String[8 * n + 7] = base32Alphabet[(b2 & maskHigh3Bits) >> 5 | (b3 & maskHigh1Bit) >> 4 | (b4 & maskHigh1Bit) >> 3];
+                    }
+                    return new string(base32String);
+                }
 			}
 		}
 	}
