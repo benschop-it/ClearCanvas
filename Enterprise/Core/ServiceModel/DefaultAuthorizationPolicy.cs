@@ -24,14 +24,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Claims;
-using System.IdentityModel.Policy;
-using System.Security.Principal;
 using System.Text;
 using ClearCanvas.Common;
 using ClearCanvas.Enterprise.Common.Authentication;
 using ClearCanvas.Common.Utilities;
 using ClearCanvas.Enterprise.Common;
+using CoreWCF.IdentityModel.Policy;
+using CoreWCF.IdentityModel.Claims;
+using System.Security.Principal;
 
 namespace ClearCanvas.Enterprise.Core.ServiceModel
 {
@@ -62,7 +62,9 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 			get { return ClaimSet.System; }
 		}
 
-		public bool Evaluate(EvaluationContext context, ref object state)
+        ClaimSet IAuthorizationPolicy.Issuer => throw new NotImplementedException();
+
+        public bool Evaluate(EvaluationContext context, ref object state)
 		{
 			object obj;
 			if (!context.Properties.TryGetValue("Identities", out obj))

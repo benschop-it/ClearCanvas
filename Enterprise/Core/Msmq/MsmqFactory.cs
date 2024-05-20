@@ -23,14 +23,14 @@
 #endregion
 
 using System;
-using System.Messaging;
+using ClearCanvas.Enterprise.Core.Porting;
 
 namespace ClearCanvas.Enterprise.Core.Msmq
 {
-	/// <summary>
-	/// Factory class for instantiating <see cref="MessageQueue"/> instances.
-	/// </summary>
-	public class MsmqFactory
+    /// <summary>
+    /// Factory class for instantiating <see cref="MessageQueue"/> instances.
+    /// </summary>
+    public class MsmqFactory
 	{
 		private static readonly MsmqFactory _default = new MsmqFactory();
 

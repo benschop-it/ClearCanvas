@@ -26,12 +26,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using System.ServiceModel;
-using System.ServiceModel.Description;
-using System.ServiceModel.Channels;
 using System.Collections.ObjectModel;
-using System.ServiceModel.Dispatcher;
 using ClearCanvas.Enterprise.Core;
+using CoreWCF.Description;
+using CoreWCF;
+using CoreWCF.Channels;
+using CoreWCF.Dispatcher;
 
 namespace ClearCanvas.Enterprise.Core.ServiceModel
 {
@@ -97,11 +97,13 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 
 		#region IServiceBehavior Members
 
-		public void AddBindingParameters(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase, Collection<ServiceEndpoint> endpoints, BindingParameterCollection bindingParameters)
+		public void AddBindingParameters(ServiceDescription serviceDescription, // TODO WCF server APIs are unsupported on .NET Core. Consider rewriting to use gRPC (https://docs.microsoft.com/dotnet/architecture/grpc-for-wcf-developers), ASP.NET Core, or CoreWCF (https://github.com/CoreWCF/CoreWCF) instead.
+ServiceHostBase serviceHostBase, Collection<ServiceEndpoint> endpoints, BindingParameterCollection bindingParameters)
 		{
 		}
 
-        public void ApplyDispatchBehavior(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase)
+        public void ApplyDispatchBehavior(ServiceDescription serviceDescription, // TODO WCF server APIs are unsupported on .NET Core. Consider rewriting to use gRPC (https://docs.microsoft.com/dotnet/architecture/grpc-for-wcf-developers), ASP.NET Core, or CoreWCF (https://github.com/CoreWCF/CoreWCF) instead.
+ServiceHostBase serviceHostBase)
         {
             foreach (ChannelDispatcherBase cdb in serviceHostBase.ChannelDispatchers)
             {
@@ -117,7 +119,8 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
             }
         }
 
-		public void Validate(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase)
+		public void Validate(ServiceDescription serviceDescription, // TODO WCF server APIs are unsupported on .NET Core. Consider rewriting to use gRPC (https://docs.microsoft.com/dotnet/architecture/grpc-for-wcf-developers), ASP.NET Core, or CoreWCF (https://github.com/CoreWCF/CoreWCF) instead.
+ServiceHostBase serviceHostBase)
 		{
 		}
 

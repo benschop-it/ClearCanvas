@@ -24,11 +24,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Selectors;
 using System.Text;
 using ClearCanvas.Common;
 using ClearCanvas.Enterprise.Common;
 using ClearCanvas.Enterprise.Common.Authentication;
+using CoreWCF.IdentityModel.Selectors;
 
 namespace ClearCanvas.Enterprise.Core.ServiceModel
 {

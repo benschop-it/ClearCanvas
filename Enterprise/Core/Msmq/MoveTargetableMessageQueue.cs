@@ -24,18 +24,18 @@
 
 using System;
 using System.ComponentModel;
-using System.Messaging;
+using ClearCanvas.Enterprise.Core.Porting;
 
 namespace ClearCanvas.Enterprise.Core.Msmq
 {
-	/// <summary>
-	/// Extends <see cref="MessageQueue"/> to implement the <see cref="IMoveTargetableQueue"/> interface.
-	/// </summary>
-	/// <remarks>
-	/// Application code should not create instances of this class. Instead, use <see cref="MsmqFactory"/> to
-	/// obtain message queue objects.
-	/// </remarks>
-	internal class MoveTargetableMessageQueue : MessageQueue, IMoveTargetableQueue
+    /// <summary>
+    /// Extends <see cref="MessageQueue"/> to implement the <see cref="IMoveTargetableQueue"/> interface.
+    /// </summary>
+    /// <remarks>
+    /// Application code should not create instances of this class. Instead, use <see cref="MsmqFactory"/> to
+    /// obtain message queue objects.
+    /// </remarks>
+    internal class MoveTargetableMessageQueue : MessageQueue, IMoveTargetableQueue
 	{
 		private QueueHandle _moveHandle = QueueHandle.Invalid;
 
@@ -44,7 +44,7 @@ namespace ClearCanvas.Enterprise.Core.Msmq
 		{
 		}
 
-		IntPtr IMoveTargetableQueue.MoveHandle
+        IntPtr IMoveTargetableQueue.MoveHandle
 		{
 			get
 			{

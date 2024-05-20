@@ -25,13 +25,13 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IdentityModel.Policy;
-using System.IdentityModel.Selectors;
-using System.IdentityModel.Tokens;
-using System.ServiceModel.Security;
 using System.Text;
-using System.ServiceModel.Description;
 using ClearCanvas.Enterprise.Common;
+using CoreWCF.Description;
+using CoreWCF.Security;
+using CoreWCF.IdentityModel.Tokens;
+using CoreWCF.IdentityModel.Selectors;
+using CoreWCF.IdentityModel.Policy;
 
 namespace ClearCanvas.Enterprise.Core.ServiceModel
 {
@@ -47,7 +47,7 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 			{
 			}
 
-			public override SecurityTokenAuthenticator CreateSecurityTokenAuthenticator(System.IdentityModel.Selectors.SecurityTokenRequirement tokenRequirement, out System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver)
+			public override SecurityTokenAuthenticator CreateSecurityTokenAuthenticator(SecurityTokenRequirement tokenRequirement, out SecurityTokenResolver outOfBandTokenResolver)
 			{
 				if (tokenRequirement.TokenType == SecurityTokenTypes.UserName)
 				{
@@ -63,12 +63,12 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 
 			}
 
-			public override System.IdentityModel.Selectors.SecurityTokenProvider CreateSecurityTokenProvider(System.IdentityModel.Selectors.SecurityTokenRequirement requirement)
+			public override SecurityTokenProvider CreateSecurityTokenProvider(SecurityTokenRequirement requirement)
 			{
 				return base.CreateSecurityTokenProvider(requirement);
 			}
 
-			public override System.IdentityModel.Selectors.SecurityTokenSerializer CreateSecurityTokenSerializer(System.IdentityModel.Selectors.SecurityTokenVersion version)
+			public override SecurityTokenSerializer CreateSecurityTokenSerializer(SecurityTokenVersion version)
 			{
 				return base.CreateSecurityTokenSerializer(version);
 			}

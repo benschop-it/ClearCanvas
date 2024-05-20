@@ -26,7 +26,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Castle.DynamicProxy;
-using Castle.Core.Interceptor;
 using ClearCanvas.Common;
 
 namespace ClearCanvas.Enterprise.Core

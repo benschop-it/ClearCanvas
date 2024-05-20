@@ -26,7 +26,7 @@ using System;
 using System.ServiceModel;
 using ClearCanvas.Common.Utilities;
 using ClearCanvas.Enterprise.Common;
-using Castle.Core.Interceptor;
+using Castle.DynamicProxy;
 using System.Reflection;
 
 namespace ClearCanvas.Enterprise.Core

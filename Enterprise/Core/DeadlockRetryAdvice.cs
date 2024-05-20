@@ -22,7 +22,8 @@
 
 #endregion
 
-using Castle.Core.Interceptor;
+
+using Castle.DynamicProxy;
 
 namespace ClearCanvas.Enterprise.Core
 {

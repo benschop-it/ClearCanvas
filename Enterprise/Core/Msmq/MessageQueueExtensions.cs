@@ -22,26 +22,29 @@
 
 #endregion
 
+using ClearCanvas.Enterprise.Core.Porting;
+using CoreWCF.Channels;
 using System;
 using System.ComponentModel;
-using System.Messaging;
 
 namespace ClearCanvas.Enterprise.Core.Msmq
 {
-	public static class MessageQueueExtensions
+    public static class MessageQueueExtensions
 	{
-		/// <summary>
-		/// Moves the specified message from this queue to the specified destination queue.
-		/// </summary>
-		/// <param name="source">The queue that currently contains the message.</param>
-		/// <param name="dest">The queue into which the message should be placed.</param>
-		/// <param name="message">The message to move.</param>
-		/// <remarks>
-		/// The message to be moved must currently be in the source queue. The source and destination
-		/// queues must have the same base queue, which implies that at least one of the two must be
-		/// a subqueue.
-		/// </remarks>
-		public static void Move(this MessageQueue source, MessageQueue dest, Message message)
+        public static MessageQueueErrorCode MessageQueueErrorCode { get; private set; }
+
+        /// <summary>
+        /// Moves the specified message from this queue to the specified destination queue.
+        /// </summary>
+        /// <param name="source">The queue that currently contains the message.</param>
+        /// <param name="dest">The queue into which the message should be placed.</param>
+        /// <param name="message">The message to move.</param>
+        /// <remarks>
+        /// The message to be moved must currently be in the source queue. The source and destination
+        /// queues must have the same base queue, which implies that at least one of the two must be
+        /// a subqueue.
+        /// </remarks>
+        public static void Move(this MessageQueue source, MessageQueue dest, Porting.Message message)
 		{
 			if(dest is IMoveTargetableQueue)
 			{
@@ -74,7 +77,7 @@ namespace ClearCanvas.Enterprise.Core.Msmq
 			}
 		}
 
-		private static void MoveMessage(IntPtr source, IntPtr dest, Message message)
+		private static void MoveMessage(IntPtr source, IntPtr dest, Porting.Message message)
 		{
 			var error = NativeMethods.MQMoveMessage(source, dest, message.LookupId, IntPtr.Zero);
 			if (error != 0)

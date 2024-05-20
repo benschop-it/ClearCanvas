@@ -23,12 +23,12 @@
 #endregion
 
 using System;
-using Castle.Core.Interceptor;
 using ClearCanvas.Common.Utilities;
 using System.ServiceModel;
 using ClearCanvas.Enterprise.Common;
 using System.Reflection;
 using ClearCanvas.Common.Caching;
+using Castle.DynamicProxy;
 
 namespace ClearCanvas.Enterprise.Core
 {

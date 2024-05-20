@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.ServiceModel;
 using System.Threading;
-using Castle.Core.Interceptor;
+using Castle.DynamicProxy;
 using ClearCanvas.Common;
 using ClearCanvas.Enterprise.Common;
 

@@ -24,16 +24,18 @@
 
 using System;
 using System.Collections.Generic;
-using System.ServiceModel.Description;
-using System.ServiceModel.Security;
-using System.ServiceModel;
 
 using ClearCanvas.Common;
 using ClearCanvas.Common.Utilities;
 using ClearCanvas.Enterprise.Common;
 using System.IdentityModel.Selectors;
-using Castle.Core.Interceptor;
 using ClearCanvas.Enterprise.Common.ServiceConfiguration.Server;
+using Castle.DynamicProxy;
+using CoreWCF.Description;
+using ClearCanvas.Enterprise.Common.Porting;
+using CoreWCF.IdentityModel.Selectors;
+using CoreWCF;
+using CoreWCF.Security;
 
 namespace ClearCanvas.Enterprise.Core.ServiceModel
 {
@@ -58,7 +60,9 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 
 
 
-		private readonly List<ServiceHost> _serviceHosts = new List<ServiceHost>();
+		private readonly List<// TODO WCF server APIs are unsupported on .NET Core. Consider rewriting to use gRPC (https://docs.microsoft.com/dotnet/architecture/grpc-for-wcf-developers), ASP.NET Core, or CoreWCF (https://github.com/CoreWCF/CoreWCF) instead.
+ServiceHost> _serviceHosts = new List<// TODO WCF server APIs are unsupported on .NET Core. Consider rewriting to use gRPC (https://docs.microsoft.com/dotnet/architecture/grpc-for-wcf-developers), ASP.NET Core, or CoreWCF (https://github.com/CoreWCF/CoreWCF) instead.
+ServiceHost>();
 
 		/// <summary>
 		/// Constructs a service mount that hosts services on the specified base URI
@@ -218,7 +222,8 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 		/// <summary>
 		/// Gets the list of <see cref="ServiceHost"/> objects created by calls to <see cref="AddServices"/>.
 		/// </summary>
-		public IList<ServiceHost> ServiceHosts
+		public IList<// TODO WCF server APIs are unsupported on .NET Core. Consider rewriting to use gRPC (https://docs.microsoft.com/dotnet/architecture/grpc-for-wcf-developers), ASP.NET Core, or CoreWCF (https://github.com/CoreWCF/CoreWCF) instead.
+ServiceHost> ServiceHosts
 		{
 			get { return _serviceHosts.AsReadOnly(); }
 		}
@@ -232,7 +237,7 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 			{
                 try
                 {
-                    host.Open();                    
+                    host.OpenAsync().RunSynchronously();
                 }
                 catch (Exception)
                 {
@@ -249,7 +254,7 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 		{
 			foreach (var host in _serviceHosts)
 			{
-				host.Close();
+				host.CloseAsync().RunSynchronously();
 			}
 		}
 
@@ -338,7 +343,7 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 			var authenticationAttribute = AttributeUtils.GetAttribute<AuthenticationAttribute>(contractAttribute.ServiceContract);
 			var authenticated = authenticationAttribute == null || authenticationAttribute.AuthenticationRequired;
 
-			TransferMode mode = ServiceTransferModeAttribute.GetTransferMode(contractAttribute.ServiceContract);
+			System.ServiceModel.TransferMode mode = ServiceTransferModeAttribute.GetTransferMode(contractAttribute.ServiceContract);
 
 			// create service URI
 			var uri = new Uri(_baseAddress, contractAttribute.ServiceContract.FullName);
@@ -347,7 +352,8 @@ namespace ClearCanvas.Enterprise.Core.ServiceModel
 				contractAttribute.ServiceContract.Name, uri);
 
 			// create service host
-			var host = new ServiceHost(serviceClass, uri);
+			// TODO WCF server APIs are unsupported on .NET Core. Consider rewriting to use gRPC (https://docs.microsoft.com/dotnet/architecture/grpc-for-wcf-developers), ASP.NET Core, or CoreWCF (https://github.com/CoreWCF/CoreWCF) instead.
+						var host = new ServiceHost(serviceClass, uri);
 
 			// if authenticated
 			if (authenticated)
