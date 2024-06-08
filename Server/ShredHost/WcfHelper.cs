@@ -24,15 +24,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.ServiceModel;
-using System.ServiceModel.Channels;
-using System.ServiceModel.Description;
 using ClearCanvas.Common;
 using ClearCanvas.Common.Utilities;
+using ClearCanvas.Server.ShredHost.Porting;
+using CoreWCF;
+using CoreWCF.Channels;
+using CoreWCF.Description;
 
 namespace ClearCanvas.Server.ShredHost
 {
-	internal sealed class WcfHelper
+    internal sealed class WcfHelper
     {
 		private enum HostBindingType
 		{
@@ -106,7 +107,7 @@ namespace ClearCanvas.Server.ShredHost
 				sed.ServiceHost.Description.Behaviors.Add(debugBehavior);
 			}
 
-			sed.ServiceHost.AddServiceEndpoint(typeof(TServiceInterfaceType), sed.Binding, endpointAddress);
+			sed.ServiceHost.AddServiceEndpoint(typeof(TServiceInterfaceType), sed.Binding, endpointAddress.OriginalString);
 			sed.ServiceHost.Open();
 
 			return sed;
@@ -129,7 +130,7 @@ namespace ClearCanvas.Server.ShredHost
 				string configurationName = String.Format("{0}_{1}", typeof(NetTcpBinding).Name, serviceConfigurationName);
 				try
 				{
-					binding = new NetTcpBinding(configurationName);
+					binding = new NetTcpBinding(/* TODO PETER configurationName */);
 				}
 				catch
 				{
@@ -137,7 +138,7 @@ namespace ClearCanvas.Server.ShredHost
 					binding = new NetTcpBinding();
 				}
 
-				((NetTcpBinding)binding).PortSharingEnabled = true;
+				// TODO PETER ((NetTcpBinding)binding).PortSharingEnabled = true;
 			}
 			else if (bindingType == HostBindingType.NamedPipes)
 			{
@@ -170,7 +171,7 @@ namespace ClearCanvas.Server.ShredHost
 				string configurationName = String.Format("{0}_{1}", typeof(WSHttpBinding).Name, serviceConfigurationName);
 				try
 				{
-					binding = new WSHttpBinding(configurationName);
+					binding = new WSHttpBinding(/*TODO PETER configurationName*/);
 				}
 				catch
 				{
@@ -183,7 +184,7 @@ namespace ClearCanvas.Server.ShredHost
                 string configurationName = String.Format("{0}_{1}", typeof(BasicHttpBinding).Name, serviceConfigurationName);
                 try
                 {
-                    binding = new BasicHttpBinding(configurationName);
+                    binding = new BasicHttpBinding(/*TODO PETER configurationName*/);
                 }
                 catch
                 {

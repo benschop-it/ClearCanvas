@@ -77,6 +77,12 @@
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="CoreWCF.ConfigurationManager" Version="1.5.2" />
+    <PackageReference Include="CoreWCF.Http" Version="1.5.2" />
+    <PackageReference Include="CoreWCF.NetFramingBase" Version="1.5.2" />
+    <PackageReference Include="CoreWCF.NetTcp" Version="1.5.2" />
+    <PackageReference Include="CoreWCF.Primitives" Version="1.5.2" />
+    <PackageReference Include="CoreWCF.WebHttp" Version="1.5.2" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="8.0.0" />
     <PackageReference Include="System.ServiceModel.Http" Version="8.0.0" />

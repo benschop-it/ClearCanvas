@@ -22,8 +22,8 @@
 
 #endregion
 
-using System.ServiceModel;
-using System.ServiceModel.Channels;
+using ClearCanvas.Server.ShredHost.Porting;
+using CoreWCF.Channels;
 
 namespace ClearCanvas.Server.ShredHost
 {

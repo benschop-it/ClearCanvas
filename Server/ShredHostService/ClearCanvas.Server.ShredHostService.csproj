@@ -83,7 +83,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.0" />
     <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="8.0.0" />
+    <PackageReference Include="TopShelf.ServiceInstaller" Version="4.3.0" />
   </ItemGroup>
   <Target Name="BeforeBuild">
     <CreateProperty Value="False">
@@ -91,7 +94,7 @@
     </CreateProperty>
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>"$(MSBuildBinPath)\Msbuild" "$(ProjectDir)\PostBuild_dist.proj" "/p:SolutionDir=$(SolutionDir);SolutionName=$(SolutionName);TargetPlatform=$(TargetPlatform);Configuration=$(ConfigurationName);ProjectName=$(ProjectName);ProjectDir=$(ProjectDir);OutDir=$(OutDir);StrongNameKeyFile=$(AssemblyOriginatorKeyFile);DistributionDir=$(DistributionDir);Options=$(Options);Localizations=$(Localizations);ReleaseType=$(ReleaseType);EditionName=$(EditionName)"</PostBuildEvent>
+    <!--<PostBuildEvent>"$(MSBuildBinPath)\Msbuild" "$(ProjectDir)\PostBuild_dist.proj" "/p:SolutionDir=$(SolutionDir);SolutionName=$(SolutionName);TargetPlatform=$(TargetPlatform);Configuration=$(ConfigurationName);ProjectName=$(ProjectName);ProjectDir=$(ProjectDir);OutDir=$(OutDir);StrongNameKeyFile=$(AssemblyOriginatorKeyFile);DistributionDir=$(DistributionDir);Options=$(Options);Localizations=$(Localizations);ReleaseType=$(ReleaseType);EditionName=$(EditionName)"</PostBuildEvent>-->
     <AssemblyTitle>ShredHostService</AssemblyTitle>
     <Company>ClearCanvas Inc.</Company>
     <Product>ShredHostService</Product>
