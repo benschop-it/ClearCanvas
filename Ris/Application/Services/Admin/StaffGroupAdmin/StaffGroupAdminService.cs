@@ -92,7 +92,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.StaffGroupAdmin
         }
 
         [ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.StaffGroup)]
 		public LoadStaffGroupForEditResponse LoadStaffGroupForEdit(LoadStaffGroupForEditRequest request)
         {
             Platform.CheckForNullReference(request, "request");
@@ -128,7 +127,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.StaffGroupAdmin
         }
 
         [UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.StaffGroup)]
 		public AddStaffGroupResponse AddStaffGroup(AddStaffGroupRequest request)
         {
             Platform.CheckForNullReference(request, "request");
@@ -147,7 +145,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.StaffGroupAdmin
         }
 
         [UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.StaffGroup)]
 		public UpdateStaffGroupResponse UpdateStaffGroup(UpdateStaffGroupRequest request)
         {
             Platform.CheckForNullReference(request, "request");
@@ -166,7 +163,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.StaffGroupAdmin
         }
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.StaffGroup)]
 		public DeleteStaffGroupResponse DeleteStaffGroup(DeleteStaffGroupRequest request)
 		{
 			try

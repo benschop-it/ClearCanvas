@@ -91,7 +91,6 @@ namespace ClearCanvas.Ris.Application.Services.RegistrationWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanCheckInProcedure")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Procedure.CheckIn)]
 		public CheckInProcedureResponse CheckInProcedure(CheckInProcedureRequest request)
 		{
 			var broker = PersistenceContext.GetBroker<IProcedureBroker>();

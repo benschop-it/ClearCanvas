@@ -64,7 +64,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.EnumerationAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Enumeration)]
 		public AddValueResponse AddValue(AddValueRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -85,7 +84,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.EnumerationAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Enumeration)]
 		public EditValueResponse EditValue(EditValueRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -105,7 +103,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.EnumerationAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Enumeration)]
 		public RemoveValueResponse RemoveValue(RemoveValueRequest request)
 		{
 			Type enumClass = null;

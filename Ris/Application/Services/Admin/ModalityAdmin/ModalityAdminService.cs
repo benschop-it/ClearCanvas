@@ -80,7 +80,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ModalityAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Modality)]
 		public AddModalityResponse AddModality(AddModalityRequest request)
 		{
 			var modality = new Modality();
@@ -96,7 +95,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ModalityAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Modality)]
 		public UpdateModalityResponse UpdateModality(UpdateModalityRequest request)
 		{
 			var modality = PersistenceContext.Load<Modality>(request.ModalityDetail.ModalityRef, EntityLoadFlags.CheckVersion);
@@ -107,7 +105,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ModalityAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Modality)]
 		public DeleteModalityResponse DeleteModality(DeleteModalityRequest request)
 		{
 			try

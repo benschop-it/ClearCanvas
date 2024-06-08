@@ -93,7 +93,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ProcedureTypeGroupAdmin
 		}
 
 		[ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.ProcedureTypeGroup)]
 		public LoadProcedureTypeGroupForEditResponse LoadProcedureTypeGroupForEdit(
 			LoadProcedureTypeGroupForEditRequest request)
 		{
@@ -104,7 +103,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ProcedureTypeGroupAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.ProcedureTypeGroup)]
 		public AddProcedureTypeGroupResponse AddProcedureTypeGroup(
 			AddProcedureTypeGroupRequest request)
 		{
@@ -126,7 +124,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ProcedureTypeGroupAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.ProcedureTypeGroup)]
 		public UpdateProcedureTypeGroupResponse UpdateProcedureTypeGroup(
 			UpdateProcedureTypeGroupRequest request)
 		{
@@ -139,7 +136,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ProcedureTypeGroupAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.ProcedureTypeGroup)]
 		public DeleteProcedureTypeGroupResponse DeleteProcedureTypeGroup(DeleteProcedureTypeGroupRequest request)
 		{
 			try

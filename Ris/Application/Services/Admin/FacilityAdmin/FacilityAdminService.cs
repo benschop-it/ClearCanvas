@@ -76,7 +76,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.FacilityAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Facility)]
 		public AddFacilityResponse AddFacility(AddFacilityRequest request)
 		{
 			var facility = new Facility();
@@ -94,7 +93,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.FacilityAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Facility)]
 		public UpdateFacilityResponse UpdateFacility(UpdateFacilityRequest request)
 		{
 			var facility = PersistenceContext.Load<Facility>(request.FacilityDetail.FacilityRef, EntityLoadFlags.CheckVersion);
@@ -108,7 +106,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.FacilityAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Facility)]
 		public DeleteFacilityResponse DeleteFacility(DeleteFacilityRequest request)
 		{
 			try

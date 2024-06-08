@@ -71,8 +71,10 @@ namespace ClearCanvas.Ris.Application.Services
 			ds.Deactivated = detail.Deactivated;
 
 			ds.ProcedureTypes.Clear();
-			ds.ProcedureTypes.AddAll(
-				detail.ProcedureTypes.Select(pt => context.Load<ProcedureType>(pt.ProcedureTypeRef, EntityLoadFlags.Proxy)).ToList());
+			var procedureTypes = detail.ProcedureTypes.Select(pt => context.Load<ProcedureType>(pt.ProcedureTypeRef, EntityLoadFlags.Proxy)).ToList();
+			foreach (ProcedureType procedureType in procedureTypes ) {
+				ds.ProcedureTypes.Add(procedureType);
+			}
 		}
 	}
 }

@@ -104,12 +104,15 @@ namespace ClearCanvas.Ris.Application.Services.ModalityWorkflow
 
 			var assembler = new ModalityPerformedProcedureStepAssembler();
 
-			var mppsSet = new HashedSet<PerformedStep>();
+			var mppsSet = new HashSet<PerformedStep>();
 			foreach (var procedure in order.Procedures)
 			{
 				foreach (var mps in procedure.ModalityProcedureSteps)
 				{
-					mppsSet.AddAll(mps.PerformedSteps);
+					var performedSteps = mps.PerformedSteps;
+					foreach (var step in performedSteps) {
+						mppsSet.Add(step);
+					}
 				}
 			}
 
@@ -286,7 +289,6 @@ namespace ClearCanvas.Ris.Application.Services.ModalityWorkflow
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Documentation.Create)]
 		[AuditRecorder(typeof(ModalityWorkflowServiceRecorder.UpdateDocumentation))]
 		public SaveOrderDocumentationDataResponse SaveOrderDocumentationData(SaveOrderDocumentationDataRequest request)
 		{
@@ -352,7 +354,6 @@ namespace ClearCanvas.Ris.Application.Services.ModalityWorkflow
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Documentation.Accept)]
 		[AuditRecorder(typeof(ModalityWorkflowServiceRecorder.CompleteDocumentation))]
 		public CompleteOrderDocumentationResponse CompleteOrderDocumentation(CompleteOrderDocumentationRequest request)
 		{
@@ -439,7 +440,7 @@ namespace ClearCanvas.Ris.Application.Services.ModalityWorkflow
 			var staffAssembler = new StaffAssembler();
 
 			// establish whether there is a unique assigned interpreter for all procedures
-			var interpreters = new HashedSet<Staff>();
+			var interpreters = new HashSet<Staff>();
 			foreach (var procedure in order.Procedures)
 			{
 				var pendingInterpretationStep = procedure.GetProcedureStep(

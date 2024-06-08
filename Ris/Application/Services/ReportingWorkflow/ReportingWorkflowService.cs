@@ -112,7 +112,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanStartInterpretation")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Create)]
 		public StartInterpretationResponse StartInterpretation(StartInterpretationRequest request)
 		{
 			var interpretation = this.PersistenceContext.Load<InterpretationStep>(request.InterpretationStepRef, EntityLoadFlags.CheckVersion);
@@ -136,7 +135,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanStartTranscriptionReview")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Create)]
 		public StartTranscriptionReviewResponse StartTranscriptionReview(StartTranscriptionReviewRequest request)
 		{
 			var transcriptionReviewStep = this.PersistenceContext.Load<TranscriptionReviewStep>(request.TranscriptionReviewStepRef, EntityLoadFlags.CheckVersion);
@@ -174,7 +172,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanCompleteInterpretationForVerification")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.SubmitForReview)]
 		[AuditRecorder(typeof(ReportingWorkflowServiceRecorder.CompleteInterpretation))]
 		public CompleteInterpretationForVerificationResponse CompleteInterpretationForVerification(CompleteInterpretationForVerificationRequest request)
 		{
@@ -199,7 +196,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanCompleteInterpretationAndVerify")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Verify)]
 		[AuditRecorder(typeof(ReportingWorkflowServiceRecorder.CompleteVerification))]
 		public CompleteInterpretationAndVerifyResponse CompleteInterpretationAndVerify(CompleteInterpretationAndVerifyRequest request)
 		{
@@ -224,8 +220,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanCancelReportingStep")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Create)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Cancel)]
 		[AuditRecorder(typeof(ReportingWorkflowServiceRecorder.Discard))]
 		public CancelReportingStepResponse CancelReportingStep(CancelReportingStepRequest request)
 		{
@@ -252,7 +246,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanReviseResidentReport")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.SubmitForReview)]
 		public ReviseResidentReportResponse ReviseResidentReport(ReviseResidentReportRequest request)
 		{
 			var step = this.PersistenceContext.Load<VerificationStep>(request.VerificationStepRef, EntityLoadFlags.CheckVersion);
@@ -266,7 +259,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanReturnToInterpreter")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Verify)]
 		public ReturnToInterpreterResponse ReturnToInterpreter(ReturnToInterpreterRequest request)
 		{
 			var step = this.PersistenceContext.Load<ReportingProcedureStep>(request.ReportingStepRef, EntityLoadFlags.CheckVersion);
@@ -286,7 +278,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanStartVerification")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Verify)]
 		public StartVerificationResponse StartVerification(StartVerificationRequest request)
 		{
 			var verification = this.PersistenceContext.Load<VerificationStep>(request.VerificationStepRef, EntityLoadFlags.CheckVersion);
@@ -300,7 +291,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanCompleteVerification")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Verify)]
 		[AuditRecorder(typeof(ReportingWorkflowServiceRecorder.CompleteVerification))]
 		public CompleteVerificationResponse CompleteVerification(CompleteVerificationRequest request)
 		{
@@ -343,7 +333,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanReviseUnpublishedReport")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Verify)]
 		[AuditRecorder(typeof(ReportingWorkflowServiceRecorder.Revise))]
 		public ReviseUnpublishedReportResponse ReviseUnpublishedReport(ReviseUnpublishedReportRequest request)
 		{
@@ -373,7 +362,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 		}
 
 		[ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Create)]
 		public LoadReportForEditResponse LoadReportForEdit(LoadReportForEditRequest request)
 		{
 			var step = this.PersistenceContext.Load<ReportingProcedureStep>(request.ReportingStepRef, EntityLoadFlags.CheckVersion);
@@ -394,7 +382,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanSaveReport")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Create)]
 		public SaveReportResponse SaveReport(SaveReportRequest request)
 		{
 			var step = this.PersistenceContext.Load<ReportingProcedureStep>(request.ReportingStepRef, EntityLoadFlags.CheckVersion);
@@ -416,20 +403,26 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 			if (request.OrderRef == null && request.ReportRef == null)
 				throw new ArgumentException("Either OrderRef or ReportRef must be non-null");
 
-			var priorReports = new HashedSet<Prior>();
+			var priorReports = new HashSet<Prior>();
 			var broker = this.PersistenceContext.GetBroker<IPriorReportBroker>();
 
 			// if an order was supplied, find relevant priors for the order
 			if (request.OrderRef != null)
 			{
 				var order = this.PersistenceContext.Load<Order>(request.OrderRef, EntityLoadFlags.Proxy);
-				priorReports.AddAll(broker.GetPriors(order, request.RelevantOnly));
+				var priors = broker.GetPriors(order, request.RelevantOnly);
+				foreach (var prior in priors) { 
+					priorReports.Add(prior); 
+				}
 			}
 			// if a report was supplied, find relevent priors for the report
 			else if (request.ReportRef != null)
 			{
 				var report = this.PersistenceContext.Load<Report>(request.ReportRef, EntityLoadFlags.Proxy);
-				priorReports.AddAll(broker.GetPriors(report, request.RelevantOnly));
+				var priors = broker.GetPriors(report, request.RelevantOnly);
+				foreach (var prior in priors) {
+					priorReports.Add(prior);
+				}
 			}
 
 			// assemble results
@@ -509,7 +502,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanReassignProcedureStep")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Report.Reassign)]
 		public ReassignProcedureStepResponse ReassignProcedureStep(ReassignProcedureStepRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -537,7 +529,6 @@ namespace ClearCanvas.Ris.Application.Services.ReportingWorkflow
 
 		[UpdateOperation]
 		[OperationEnablement("CanCompleteDowntimeProcedure")]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Downtime.RecoveryOperations)]
 		public CompleteDowntimeProcedureResponse CompleteDowntimeProcedure(CompleteDowntimeProcedureRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");

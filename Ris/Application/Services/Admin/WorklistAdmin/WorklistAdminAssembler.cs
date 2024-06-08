@@ -221,7 +221,7 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorklistAdmin
 			if (detail.Portabilities != null)
 			{
 				// put them into a set to guarantee uniqueness, in case the client sent a non-unique list
-				var set = new HashedSet<bool>(detail.Portabilities);
+				var set = new HashSet<bool>(detail.Portabilities);
 
 				// it only makes sense to enable this filter if the set contains exactly one value (true or false, but not both)
 				worklist.PortableFilter.IsEnabled = set.Count == 1;
@@ -242,14 +242,16 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorklistAdmin
 			if (updateSubscribers)
 			{
 				worklist.StaffSubscribers.Clear();
-				worklist.StaffSubscribers.AddAll(
-					CollectionUtils.Map(detail.StaffSubscribers,
-						(StaffSummary summary) => context.Load<Staff>(summary.StaffRef, EntityLoadFlags.Proxy)));
+				var staffSubscribers = CollectionUtils.Map(detail.StaffSubscribers,	(StaffSummary summary) => context.Load<Staff>(summary.StaffRef, EntityLoadFlags.Proxy));
+				foreach (var staffSubscriber in staffSubscribers) {
+					worklist.StaffSubscribers.Add(staffSubscriber);
+				}
 
-				worklist.GroupSubscribers.Clear();
-				worklist.GroupSubscribers.AddAll(
-					CollectionUtils.Map(detail.GroupSubscribers,
-						(StaffGroupSummary summary) => context.Load<StaffGroup>(summary.StaffGroupRef, EntityLoadFlags.Proxy)));
+                worklist.GroupSubscribers.Clear();
+                var groupSubscribers = CollectionUtils.Map(detail.GroupSubscribers, (StaffGroupSummary summary) => context.Load<StaffGroup>(summary.StaffGroupRef, EntityLoadFlags.Proxy));
+				foreach (var groupSubscriber in groupSubscribers) {
+					worklist.GroupSubscribers.Add(groupSubscriber);
+				}
 			}
 
 			// If the worklist supports staff role filters, process the filters provided.
@@ -306,7 +308,10 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorklistAdmin
 			filter.Values.Clear();
 			if (summaries != null)
 			{
-				filter.Values.AddAll(CollectionUtils.Map(summaries, converter));
+				var filters = CollectionUtils.Map(summaries, converter);
+                foreach (var f in filters) {
+					filter.Values.Add(f);
+                }
 			}
 			filter.IsEnabled = filter.Values.Count > 0;
 		}
@@ -316,9 +321,10 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorklistAdmin
 			staffFilter.Values.Clear();
 			if (stafflist != null)
 			{
-				staffFilter.Values.AddAll(CollectionUtils.Map(
-					stafflist.Staff,
-					(StaffSummary s) => context.Load<Staff>(s.StaffRef, EntityLoadFlags.Proxy)));
+				var filters = CollectionUtils.Map(stafflist.Staff, (StaffSummary s) => context.Load<Staff>(s.StaffRef, EntityLoadFlags.Proxy));
+				foreach ( var filter in filters) {
+					staffFilter.Values.Add(filter);
+				}
 
 				staffFilter.IncludeCurrentStaff = stafflist.IncludeCurrentUser;
 			}

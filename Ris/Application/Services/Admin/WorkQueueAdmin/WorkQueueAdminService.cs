@@ -43,7 +43,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorkQueueAdmin
 		#region IWorkQueueAdminService Members
 
 		[ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Management.WorkQueue)]
 		public GetWorkQueueFormDataResponse GetWorkQueueFormData(GetWorkQueueFormDataRequest request)
 		{
 			var statuses = EnumUtils.GetEnumValueList<WorkQueueStatusEnum>(this.PersistenceContext);
@@ -56,7 +55,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorkQueueAdmin
 		}
 
 		[ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Management.WorkQueue)]
 		public ListWorkQueueItemsResponse ListWorkQueueItems(ListWorkQueueItemsRequest request)
 		{
 			var criteria = new WorkQueueItemSearchCriteria();
@@ -118,7 +116,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorkQueueAdmin
 		}
 
 		[ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Management.WorkQueue)]
 		public LoadWorkQueueItemForEditResponse LoadWorkQueueItemForEdit(LoadWorkQueueItemForEditRequest request)
 		{
 			var item = this.PersistenceContext.Load<WorkQueueItem>(request.WorkQueueItemRef);
@@ -127,14 +124,12 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorkQueueAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Management.WorkQueue)]
 		public PurgeCompletedWorkQueueItemsResponse PurgeCompletedWorkQueueItems(PurgeCompletedWorkQueueItemsRequest request)
 		{
 			throw new NotImplementedException();
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Management.WorkQueue)]
 		public ResubmitWorkQueueItemResponse ResubmitWorkQueueItem(ResubmitWorkQueueItemRequest request)
 		{
 			var item = this.PersistenceContext.Load<WorkQueueItem>(request.WorkQueueItemRef);
@@ -144,7 +139,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorkQueueAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Management.WorkQueue)]
 		public RemoveWorkQueueItemResponse RemoveWorkQueueItem(RemoveWorkQueueItemRequest request)
 		{
 			throw new NotImplementedException();

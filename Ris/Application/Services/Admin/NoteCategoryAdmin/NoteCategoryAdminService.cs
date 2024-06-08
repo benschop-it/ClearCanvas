@@ -90,7 +90,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.NoteCategoryAdmin
         /// Add the specified NoteCategory
         /// </summary>
         [UpdateOperation]
-        [PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.PatientNoteCategory)]
         public AddNoteCategoryResponse AddNoteCategory(AddNoteCategoryRequest request)
         {
             PatientNoteCategory noteCategory = new PatientNoteCategory();
@@ -111,7 +110,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.NoteCategoryAdmin
         /// Update the specified NoteCategory
         /// </summary>
         [UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.PatientNoteCategory)]
 		public UpdateNoteCategoryResponse UpdateNoteCategory(UpdateNoteCategoryRequest request)
         {
             PatientNoteCategory noteCategory = PersistenceContext.Load<PatientNoteCategory>(request.NoteCategoryDetail.NoteCategoryRef, EntityLoadFlags.CheckVersion);
@@ -126,7 +124,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.NoteCategoryAdmin
 		/// Delete the specified NoteCategory
 		/// </summary>
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.PatientNoteCategory)]
 		public DeleteNoteCategoryResponse DeleteNoteCategory(DeleteNoteCategoryRequest request)
 		{
 			try

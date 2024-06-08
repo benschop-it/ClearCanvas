@@ -99,7 +99,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.LocationAdmin
         /// Add the specified location
         /// </summary>
         [UpdateOperation]
-        [PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Location)]
         public AddLocationResponse AddLocation(AddLocationRequest request)
         {
             Location location = new Location();
@@ -120,7 +119,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.LocationAdmin
         /// Update the specified location
         /// </summary>
         [UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Location)]
 		public UpdateLocationResponse UpdateLocation(UpdateLocationRequest request)
         {
             Location location = PersistenceContext.Load<Location>(request.LocationDetail.LocationRef, EntityLoadFlags.CheckVersion);
@@ -135,7 +133,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.LocationAdmin
 		/// Delete the specified location
 		/// </summary>
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Location)]
 		public DeleteLocationResponse DeleteLocation(DeleteLocationRequest request)
 		{
 			try

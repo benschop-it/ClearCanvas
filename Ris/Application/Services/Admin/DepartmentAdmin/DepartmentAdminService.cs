@@ -80,7 +80,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.DepartmentAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Department)]
 		public AddDepartmentResponse AddDepartment(AddDepartmentRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -98,7 +97,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.DepartmentAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Department)]
 		public UpdateDepartmentResponse UpdateDepartment(UpdateDepartmentRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -116,7 +114,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.DepartmentAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Department)]
 		public DeleteDepartmentResponse DeleteDepartment(DeleteDepartmentRequest request)
 		{
 			try

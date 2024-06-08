@@ -112,7 +112,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.VisitAdmin
         }
 
         [UpdateOperation]
-        [PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Visit.Update)]
         public UpdateVisitResponse UpdateVisit(UpdateVisitRequest request)
         {
             Visit visit = PersistenceContext.Load<Visit>(request.VisitRef);
@@ -124,7 +123,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.VisitAdmin
         }
 
         [UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Visit.Create)]
 		public AddVisitResponse AddVisit(AddVisitRequest request)
         {
             Visit visit = new Visit();

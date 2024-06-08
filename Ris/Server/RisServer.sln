@@ -58,7 +58,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Hibe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Ris.Application.Common", "..\Application\Common\ClearCanvas.Ris.Application.Common.csproj", "{09F49217-CD98-4773-8CFB-594F189EEE3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Application.Services", "..\Application\Services\ClearCanvas.Ris.Application.Services.csproj", "{11548867-F0DC-4142-82E8-59EBC36B8980}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Ris.Application.Services", "..\Application\Services\ClearCanvas.Ris.Application.Services.csproj", "{11548867-F0DC-4142-82E8-59EBC36B8980}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Server.ShredHost", "..\..\Server\ShredHost\ClearCanvas.Server.ShredHost.csproj", "{8347B928-805E-42E7-B980-08D8AF1A0671}"
 EndProject

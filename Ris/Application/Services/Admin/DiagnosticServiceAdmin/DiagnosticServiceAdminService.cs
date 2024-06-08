@@ -146,7 +146,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.DiagnosticServiceAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.DiagnosticService)]
 		public AddDiagnosticServiceResponse AddDiagnosticService(AddDiagnosticServiceRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -164,7 +163,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.DiagnosticServiceAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.DiagnosticService)]
 		public UpdateDiagnosticServiceResponse UpdateDiagnosticService(UpdateDiagnosticServiceRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -182,7 +180,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.DiagnosticServiceAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.DiagnosticService)]
 		public DeleteDiagnosticServiceResponse DeleteDiagnosticService(DeleteDiagnosticServiceRequest request)
 		{
 			try

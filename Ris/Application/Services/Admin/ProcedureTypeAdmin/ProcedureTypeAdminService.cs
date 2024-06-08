@@ -128,7 +128,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ProcedureTypeAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.ProcedureType)]
 		public AddProcedureTypeResponse AddProcedureType(AddProcedureTypeRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -146,7 +145,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ProcedureTypeAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.ProcedureType)]
 		public UpdateProcedureTypeResponse UpdateProcedureType(UpdateProcedureTypeRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -164,7 +162,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.ProcedureTypeAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.ProcedureType)]
 		public DeleteProcedureTypeResponse DeleteProcedureType(DeleteProcedureTypeRequest request)
 		{
 			try

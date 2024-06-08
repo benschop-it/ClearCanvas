@@ -151,9 +151,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorklistAdmin
 		}
 
 		[ReadOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Worklist)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Worklist.Personal)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Worklist.Group)]
 		public LoadWorklistForEditResponse LoadWorklistForEdit(LoadWorklistForEditRequest request)
 		{
 			var worklist = PersistenceContext.Load<Worklist>(request.EntityRef);
@@ -164,9 +161,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorklistAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Worklist)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Worklist.Personal)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Worklist.Group)]
 		public AddWorklistResponse AddWorklist(AddWorklistRequest request)
 		{
 			if (string.IsNullOrEmpty(request.Detail.Name))
@@ -199,9 +193,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorklistAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Worklist)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Worklist.Personal)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Worklist.Group)]
 		public UpdateWorklistResponse UpdateWorklist(UpdateWorklistRequest request)
 		{
 			var worklist = this.PersistenceContext.Load<Worklist>(request.EntityRef);
@@ -217,9 +208,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.WorklistAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Worklist)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Worklist.Personal)]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Workflow.Worklist.Group)]
 		public DeleteWorklistResponse DeleteWorklist(DeleteWorklistRequest request)
 		{
 			try

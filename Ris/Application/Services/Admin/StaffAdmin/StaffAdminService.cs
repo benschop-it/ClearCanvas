@@ -114,7 +114,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.StaffAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Staff)]
 		public AddStaffResponse AddStaff(AddStaffRequest request)
 		{
 			Platform.CheckForNullReference(request, "request");
@@ -175,7 +174,6 @@ namespace ClearCanvas.Ris.Application.Services.Admin.StaffAdmin
 		}
 
 		[UpdateOperation]
-		[PrincipalPermission(SecurityAction.Demand, Role = AuthorityTokens.Admin.Data.Staff)]
 		public DeleteStaffResponse DeleteStaff(DeleteStaffRequest request)
 		{
 			try
