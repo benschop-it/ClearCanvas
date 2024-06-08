@@ -56,7 +56,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Hibe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Hibernate.DdlWriter", "..\..\Enterprise\Hibernate\DdlWriter\ClearCanvas.Enterprise.Hibernate.DdlWriter.csproj", "{298A5358-EF8F-4D27-A935-5E0E2BEF754F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Application.Common", "..\Application\Common\ClearCanvas.Ris.Application.Common.csproj", "{09F49217-CD98-4773-8CFB-594F189EEE3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Ris.Application.Common", "..\Application\Common\ClearCanvas.Ris.Application.Common.csproj", "{09F49217-CD98-4773-8CFB-594F189EEE3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Application.Services", "..\Application\Services\ClearCanvas.Ris.Application.Services.csproj", "{11548867-F0DC-4142-82E8-59EBC36B8980}"
 EndProject
