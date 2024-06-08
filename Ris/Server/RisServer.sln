@@ -10,7 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Common", "..\..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Healthcare", "..\..\Healthcare\ClearCanvas.Healthcare.csproj", "{748C08F1-FD6E-49F6-90BB-90C3A323C714}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Healthcare.Hibernate", "..\..\Healthcare\Hibernate\ClearCanvas.Healthcare.Hibernate.csproj", "{FFBEB9C1-2E09-4A9E-A863-B104CFDC55F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Healthcare.Hibernate", "..\..\Healthcare\Hibernate\ClearCanvas.Healthcare.Hibernate.csproj", "{FFBEB9C1-2E09-4A9E-A863-B104CFDC55F1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Workflow", "..\..\Workflow\ClearCanvas.Workflow.csproj", "{576C4A35-B314-49D0-BF53-4BD43D8D1F31}"
 EndProject
@@ -20,9 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Conf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Configuration.Hibernate", "..\..\Enterprise\Configuration\Hibernate\ClearCanvas.Enterprise.Configuration.Hibernate.csproj", "{32C097AB-931A-44B0-9ED2-B6F343C3F588}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Server", "ClearCanvas.Ris.Server.csproj", "{977A05C3-8145-4EB0-A620-6526F91B2016}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Ris.Server", "ClearCanvas.Ris.Server.csproj", "{977A05C3-8145-4EB0-A620-6526F91B2016}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Server.Executable", "Executable\ClearCanvas.Ris.Server.Executable.csproj", "{E5F0BD79-A7CF-4356-AD62-0AA3DEBFAB9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Ris.Server.Executable", "Executable\ClearCanvas.Ris.Server.Executable.csproj", "{E5F0BD79-A7CF-4356-AD62-0AA3DEBFAB9A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EE5C649B-3AF6-4000-A590-335288A0EBD6} = {EE5C649B-3AF6-4000-A590-335288A0EBD6}
 		{748C08F1-FD6E-49F6-90BB-90C3A323C714} = {748C08F1-FD6E-49F6-90BB-90C3A323C714}
@@ -54,15 +54,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Auth
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Hibernate", "..\..\Enterprise\Hibernate\ClearCanvas.Enterprise.Hibernate.csproj", "{4CED35C2-4659-492D-8F85-F560E469BE11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Enterprise.Hibernate.DdlWriter", "..\..\Enterprise\Hibernate\DdlWriter\ClearCanvas.Enterprise.Hibernate.DdlWriter.csproj", "{298A5358-EF8F-4D27-A935-5E0E2BEF754F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Enterprise.Hibernate.DdlWriter", "..\..\Enterprise\Hibernate\DdlWriter\ClearCanvas.Enterprise.Hibernate.DdlWriter.csproj", "{298A5358-EF8F-4D27-A935-5E0E2BEF754F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Ris.Application.Common", "..\Application\Common\ClearCanvas.Ris.Application.Common.csproj", "{09F49217-CD98-4773-8CFB-594F189EEE3B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Ris.Application.Services", "..\Application\Services\ClearCanvas.Ris.Application.Services.csproj", "{11548867-F0DC-4142-82E8-59EBC36B8980}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Server.ShredHost", "..\..\Server\ShredHost\ClearCanvas.Server.ShredHost.csproj", "{8347B928-805E-42E7-B980-08D8AF1A0671}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Server.ShredHost", "..\..\Server\ShredHost\ClearCanvas.Server.ShredHost.csproj", "{8347B928-805E-42E7-B980-08D8AF1A0671}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Server.ShredHostService", "..\..\Server\ShredHostService\ClearCanvas.Server.ShredHostService.csproj", "{8FC2F7CD-F35B-4AF2-BD98-3F3F75FA9E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Server.ShredHostService", "..\..\Server\ShredHostService\ClearCanvas.Server.ShredHostService.csproj", "{8FC2F7CD-F35B-4AF2-BD98-3F3F75FA9E07}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EE5C649B-3AF6-4000-A590-335288A0EBD6} = {EE5C649B-3AF6-4000-A590-335288A0EBD6}
 		{748C08F1-FD6E-49F6-90BB-90C3A323C714} = {748C08F1-FD6E-49F6-90BB-90C3A323C714}
@@ -84,7 +84,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Server.ShredHos
 		{F3AC6B07-4E21-4BE2-875E-E4FC7BD240D0} = {F3AC6B07-4E21-4BE2-875E-E4FC7BD240D0}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearCanvas.Ris.Shreds", "..\Shreds\ClearCanvas.Ris.Shreds.csproj", "{EE5C649B-3AF6-4000-A590-335288A0EBD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Ris.Shreds", "..\Shreds\ClearCanvas.Ris.Shreds.csproj", "{EE5C649B-3AF6-4000-A590-335288A0EBD6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearCanvas.Dicom", "..\..\Dicom\ClearCanvas.Dicom.csproj", "{AD9ECE2B-8268-4115-8DC8-860FBD011FFF}"
 EndProject

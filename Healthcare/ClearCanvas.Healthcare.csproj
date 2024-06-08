@@ -27,6 +27,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <AssemblyTitle>Healthcare</AssemblyTitle>
     <Product>Healthcare</Product>
     <Copyright>Copyright %28c%29 2013</Copyright>
