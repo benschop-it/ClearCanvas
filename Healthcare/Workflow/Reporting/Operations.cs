@@ -257,12 +257,14 @@ namespace ClearCanvas.Healthcare.Workflow.Reporting
 				var interpretationSteps = new List<InterpretationStep>();
 				if (!IsAddendumStep(step))
 				{
-					var procedures = new HashedSet<Procedure> { step.Procedure };
+					var procedures = new HashSet<Procedure> { step.Procedure };
 
 					// if there are linked procedures, schedule a new interpretation for each procedure being reported
 					if (step.ReportPart != null)
 					{
-						procedures.AddAll(step.ReportPart.Report.Procedures);
+						foreach (var procedure in step.ReportPart.Report.Procedures) {
+							procedures.Add(procedure);
+						}
 					}
 
 					// schedule new interpretations

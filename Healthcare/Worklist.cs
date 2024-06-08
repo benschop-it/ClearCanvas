@@ -24,6 +24,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using ClearCanvas.Common.Specifications;
 using ClearCanvas.Common.Utilities;
 using ClearCanvas.Enterprise.Core;
@@ -239,8 +240,8 @@ namespace ClearCanvas.Healthcare
 		protected Worklist()
 		{
 			_owner = WorklistOwner.Admin;   // admin owned by default
-			_staffSubscribers = new HashedSet<Staff>();
-			_groupSubscribers = new HashedSet<StaffGroup>();
+			_staffSubscribers = new HashSet<Staff>();
+			_groupSubscribers = new HashSet<StaffGroup>();
 
 			_procedureTypeFilter = new WorklistProcedureTypeFilter();
 			_procedureTypeGroupFilter = new WorklistProcedureTypeGroupFilter();

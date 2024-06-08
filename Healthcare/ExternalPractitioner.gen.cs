@@ -35,7 +35,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private DateTime? _lastEditedTime;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ExternalPractitionerContactPoint> _contactPoints;
+	  	private ISet<ClearCanvas.Healthcare.ExternalPractitionerContactPoint> _contactPoints;
 	  	
 	  	private IDictionary<string, string> _extendedProperties;
 	  	
@@ -56,7 +56,7 @@ namespace ClearCanvas.Healthcare
 		 	
 		  	_name = new ClearCanvas.Healthcare.PersonName();
 		  	
-		  	_contactPoints = new HashedSet<ClearCanvas.Healthcare.ExternalPractitionerContactPoint>();
+		  	_contactPoints = new HashSet<ClearCanvas.Healthcare.ExternalPractitionerContactPoint>();
 		  	
 		  	_extendedProperties = new Dictionary<string, string>();
 		  	
@@ -68,7 +68,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public ExternalPractitioner(ClearCanvas.Healthcare.PersonName name1, string licensenumber1, string billingnumber1, bool isverified1, DateTime? lastverifiedtime1, DateTime? lasteditedtime1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ExternalPractitionerContactPoint> contactpoints1, IDictionary<string, string> extendedproperties1, ClearCanvas.Healthcare.ExternalPractitioner mergedinto1)
+	  	public ExternalPractitioner(ClearCanvas.Healthcare.PersonName name1, string licensenumber1, string billingnumber1, bool isverified1, DateTime? lastverifiedtime1, DateTime? lasteditedtime1, ISet<ClearCanvas.Healthcare.ExternalPractitionerContactPoint> contactpoints1, IDictionary<string, string> extendedproperties1, ClearCanvas.Healthcare.ExternalPractitioner mergedinto1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -186,7 +186,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ExternalPractitionerContactPoint> ContactPoints
+	  	public virtual ISet<ClearCanvas.Healthcare.ExternalPractitionerContactPoint> ContactPoints
 	  	{
 			
 			get { return _contactPoints; }

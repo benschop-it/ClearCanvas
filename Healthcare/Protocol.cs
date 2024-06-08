@@ -115,7 +115,7 @@ namespace ClearCanvas.Healthcare
 				return false;
 			if (_author != null)
 				return false;
-			if (!_codes.IsEmpty)
+			if (!(_codes.Count == 0))
 				return false;
 			return true;
 		}

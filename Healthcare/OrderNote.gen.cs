@@ -43,7 +43,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public OrderNote(string category1, string body1, bool urgent1, DateTime creationtime1, ClearCanvas.Healthcare.Staff author1, ClearCanvas.Healthcare.StaffGroup onbehalfofgroup1, DateTime? posttime1, bool isfullyacknowledged1, bool haspostings1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.NotePosting> postings1, ClearCanvas.Healthcare.Note ghostof1, ClearCanvas.Healthcare.Order order1)
+	  	public OrderNote(string category1, string body1, bool urgent1, DateTime creationtime1, ClearCanvas.Healthcare.Staff author1, ClearCanvas.Healthcare.StaffGroup onbehalfofgroup1, DateTime? posttime1, bool isfullyacknowledged1, bool haspostings1, ISet<ClearCanvas.Healthcare.NotePosting> postings1, ClearCanvas.Healthcare.Note ghostof1, ClearCanvas.Healthcare.Order order1)
 			:base(category1, body1, urgent1, creationtime1, author1, onbehalfofgroup1, posttime1, isfullyacknowledged1, haspostings1, postings1, ghostof1)
 	  	{
 		  	CustomInitialize();

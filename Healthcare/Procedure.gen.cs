@@ -28,7 +28,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private string _number;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProcedureStep> _procedureSteps;
+	  	private ISet<ClearCanvas.Healthcare.ProcedureStep> _procedureSteps;
 	  	
 	  	private DateTime? _scheduledStartTime;
 	  	
@@ -60,9 +60,9 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private string _studyInstanceUID;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Report> _reports;
+	  	private ISet<ClearCanvas.Healthcare.Report> _reports;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Protocol> _protocols;
+	  	private ISet<ClearCanvas.Healthcare.Protocol> _protocols;
 	  	
 	  	private ClearCanvas.Healthcare.Procedure _ghostOf;
 	  	
@@ -77,11 +77,11 @@ namespace ClearCanvas.Healthcare
 	  	public Procedure()
 	  	{
 		 	
-		  	_procedureSteps = new HashedSet<ClearCanvas.Healthcare.ProcedureStep>();
+		  	_procedureSteps = new HashSet<ClearCanvas.Healthcare.ProcedureStep>();
 		  	
-		  	_reports = new HashedSet<ClearCanvas.Healthcare.Report>();
+		  	_reports = new HashSet<ClearCanvas.Healthcare.Report>();
 		  	
-		  	_protocols = new HashedSet<ClearCanvas.Healthcare.Protocol>();
+		  	_protocols = new HashSet<ClearCanvas.Healthcare.Protocol>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -91,7 +91,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public Procedure(ClearCanvas.Healthcare.Order order1, ClearCanvas.Healthcare.ProcedureType type1, string number1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProcedureStep> proceduresteps1, DateTime? scheduledstarttime1, int scheduledduration1, DateTime? scheduledendtime1, ClearCanvas.Healthcare.SchedulingCodeEnum schedulingcode1, DateTime? starttime1, DateTime? endtime1, ClearCanvas.Healthcare.ProcedureStatus status1, ClearCanvas.Healthcare.Facility performingfacility1, ClearCanvas.Healthcare.Department performingdepartment1, ClearCanvas.Healthcare.Laterality laterality1, bool portable1, ClearCanvas.Healthcare.ProcedureCheckIn procedurecheckin1, ClearCanvas.Healthcare.ImageAvailability imageavailability1, bool downtimerecoverymode1, string studyinstanceuid1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Report> reports1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Protocol> protocols1, ClearCanvas.Healthcare.Procedure ghostof1)
+	  	public Procedure(ClearCanvas.Healthcare.Order order1, ClearCanvas.Healthcare.ProcedureType type1, string number1, ISet<ClearCanvas.Healthcare.ProcedureStep> proceduresteps1, DateTime? scheduledstarttime1, int scheduledduration1, DateTime? scheduledendtime1, ClearCanvas.Healthcare.SchedulingCodeEnum schedulingcode1, DateTime? starttime1, DateTime? endtime1, ClearCanvas.Healthcare.ProcedureStatus status1, ClearCanvas.Healthcare.Facility performingfacility1, ClearCanvas.Healthcare.Department performingdepartment1, ClearCanvas.Healthcare.Laterality laterality1, bool portable1, ClearCanvas.Healthcare.ProcedureCheckIn procedurecheckin1, ClearCanvas.Healthcare.ImageAvailability imageavailability1, bool downtimerecoverymode1, string studyinstanceuid1, ISet<ClearCanvas.Healthcare.Report> reports1, ISet<ClearCanvas.Healthcare.Protocol> protocols1, ClearCanvas.Healthcare.Procedure ghostof1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -198,7 +198,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProcedureStep> ProcedureSteps
+	  	public virtual ISet<ClearCanvas.Healthcare.ProcedureStep> ProcedureSteps
 	  	{
 			
 			get { return _procedureSteps; }
@@ -413,7 +413,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Report> Reports
+	  	public virtual ISet<ClearCanvas.Healthcare.Report> Reports
 	  	{
 			
 			get { return _reports; }
@@ -427,7 +427,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Protocol> Protocols
+	  	public virtual ISet<ClearCanvas.Healthcare.Protocol> Protocols
 	  	{
 			
 			get { return _protocols; }

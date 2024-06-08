@@ -81,8 +81,11 @@ namespace ClearCanvas.Healthcare
 			ExtendedPropertyUtils.Update(result.ExtendedProperties, extendedProperties);
 
 			// construct the set of retained contact points
-			var retainedContactPoints = new HashedSet<ExternalPractitionerContactPoint>();
-			retainedContactPoints.AddAll(contactPointReplacements.Values);
+			var retainedContactPoints = new HashSet<ExternalPractitionerContactPoint>();
+
+			foreach (var value in contactPointReplacements.Values) {
+				retainedContactPoints.Add(value);
+			};
 
 			// some of the replacement contact points are merged.  This should not be allowed.
 			if (CollectionUtils.Contains(contactPointReplacements.Values, cp => cp.IsMerged))

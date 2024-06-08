@@ -23,6 +23,7 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using ClearCanvas.Enterprise.Core.Modelling;
 using Iesi.Collections.Generic;
 
@@ -34,13 +35,13 @@ namespace ClearCanvas.Healthcare
 
     	public ModalityPerformedProcedureStep()
     	{
-			_dicomSeries = new HashedSet<ClearCanvas.Healthcare.DicomSeries>();
+			_dicomSeries = new HashSet<ClearCanvas.Healthcare.DicomSeries>();
 		}
 
     	public ModalityPerformedProcedureStep(Staff performingStaff, DateTime? startTime)
 			: base(performingStaff, startTime)
     	{
-			_dicomSeries = new HashedSet<ClearCanvas.Healthcare.DicomSeries>();
+			_dicomSeries = new HashSet<ClearCanvas.Healthcare.DicomSeries>();
 		}
 
 		[PersistentProperty]

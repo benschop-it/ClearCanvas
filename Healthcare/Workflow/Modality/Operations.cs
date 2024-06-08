@@ -55,7 +55,7 @@ namespace ClearCanvas.Healthcare.Workflow.Modality
 			foreach (var mps in procedure.ModalityProcedureSteps)
 			{
 				// if the MPS is not terminated and has some MPPS
-				if(!mps.IsTerminated && !mps.PerformedSteps.IsEmpty)
+				if(!mps.IsTerminated && !(mps.PerformedSteps.Count == 0))
 				{
 					var allMppsDiscontinued = CollectionUtils.TrueForAll(mps.PerformedSteps,
 						(PerformedProcedureStep pps) => pps.State == PerformedStepStatus.DC);

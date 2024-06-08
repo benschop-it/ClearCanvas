@@ -26,7 +26,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private string _description;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ReadingGroup> _readingGroups;
+	  	private ISet<ClearCanvas.Healthcare.ReadingGroup> _readingGroups;
 	  	
 	  	private IList<ClearCanvas.Healthcare.ProtocolCode> _codes;
 	  	
@@ -41,7 +41,7 @@ namespace ClearCanvas.Healthcare
 	  	public ProtocolGroup()
 	  	{
 		 	
-		  	_readingGroups = new HashedSet<ClearCanvas.Healthcare.ReadingGroup>();
+		  	_readingGroups = new HashSet<ClearCanvas.Healthcare.ReadingGroup>();
 		  	
 		  	_codes = new List<ClearCanvas.Healthcare.ProtocolCode>();
 		  	
@@ -53,7 +53,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public ProtocolGroup(string name1, string description1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ReadingGroup> readinggroups1, IList<ClearCanvas.Healthcare.ProtocolCode> codes1)
+	  	public ProtocolGroup(string name1, string description1, ISet<ClearCanvas.Healthcare.ReadingGroup> readinggroups1, IList<ClearCanvas.Healthcare.ProtocolCode> codes1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -110,7 +110,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ReadingGroup> ReadingGroups
+	  	public virtual ISet<ClearCanvas.Healthcare.ReadingGroup> ReadingGroups
 	  	{
 			
 			get { return _readingGroups; }

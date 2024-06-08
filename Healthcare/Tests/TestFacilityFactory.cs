@@ -38,7 +38,7 @@ namespace ClearCanvas.Healthcare.Tests
 				"Toronto Community Hospital",
 				null,
 				new InformationAuthorityEnum("UHN", "UHN", "University Health Network"),
-				new HashedSet<Department>());
+				new HashSet<Department>());
         }
     }
 }

@@ -29,7 +29,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private bool _elective;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Staff> _members;
+	  	private ISet<ClearCanvas.Healthcare.Staff> _members;
 	  	
 	  	private bool _deactivated;
 	  	
@@ -44,7 +44,7 @@ namespace ClearCanvas.Healthcare
 	  	public StaffGroup()
 	  	{
 		 	
-		  	_members = new HashedSet<ClearCanvas.Healthcare.Staff>();
+		  	_members = new HashSet<ClearCanvas.Healthcare.Staff>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -54,7 +54,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public StaffGroup(string name1, string description1, bool elective1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Staff> members1)
+	  	public StaffGroup(string name1, string description1, bool elective1, ISet<ClearCanvas.Healthcare.Staff> members1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -125,7 +125,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Staff> Members
+	  	public virtual ISet<ClearCanvas.Healthcare.Staff> Members
 	  	{
 			
 			get { return _members; }

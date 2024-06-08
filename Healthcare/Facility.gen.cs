@@ -31,7 +31,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private ClearCanvas.Healthcare.InformationAuthorityEnum _informationAuthority;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Department> _departments;
+	  	private ISet<ClearCanvas.Healthcare.Department> _departments;
 	  	
 	  	private bool _deactivated;
 	  	
@@ -46,7 +46,7 @@ namespace ClearCanvas.Healthcare
 	  	public Facility()
 	  	{
 		 	
-		  	_departments = new HashedSet<ClearCanvas.Healthcare.Department>();
+		  	_departments = new HashSet<ClearCanvas.Healthcare.Department>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -56,7 +56,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public Facility(string code1, string name1, string description1, ClearCanvas.Healthcare.InformationAuthorityEnum informationauthority1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Department> departments1)
+	  	public Facility(string code1, string name1, string description1, ClearCanvas.Healthcare.InformationAuthorityEnum informationauthority1, ISet<ClearCanvas.Healthcare.Department> departments1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -147,7 +147,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Department> Departments
+	  	public virtual ISet<ClearCanvas.Healthcare.Department> Departments
 	  	{
 			
 			get { return _departments; }

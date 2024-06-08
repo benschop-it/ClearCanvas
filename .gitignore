@@ -18,8 +18,8 @@ syntax: glob
 *.lib
 *.sbr
 *.scc
-*.gen.cs
-*.gen.xml
+#*.gen.cs
+#*.gen.xml
 *.orig
 *.swp
 *.*~
@@ -62,3 +62,4 @@ ImageServer/Web/Application/Pages/Help/UsersGuide/*
 
 # Files for Github integration
 ReferencedAssemblies
+**/.vs/*

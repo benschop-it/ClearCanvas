@@ -47,7 +47,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private IDictionary<string, string> _extendedProperties;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.StaffGroup> _groups;
+	  	private ISet<ClearCanvas.Healthcare.StaffGroup> _groups;
 	  	
 	  	private bool _deactivated;
 	  	
@@ -72,7 +72,7 @@ namespace ClearCanvas.Healthcare
 		  	
 		  	_extendedProperties = new Dictionary<string, string>();
 		  	
-		  	_groups = new HashedSet<ClearCanvas.Healthcare.StaffGroup>();
+		  	_groups = new HashSet<ClearCanvas.Healthcare.StaffGroup>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -82,7 +82,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public Staff(string id1, ClearCanvas.Healthcare.PersonName name1, ClearCanvas.Healthcare.Sex sex1, string title1, string licensenumber1, string billingnumber1, ClearCanvas.Healthcare.StaffTypeEnum type1, string username1, IList<ClearCanvas.Healthcare.EmailAddress> emailaddresses1, IList<ClearCanvas.Healthcare.Address> addresses1, IList<ClearCanvas.Healthcare.TelephoneNumber> telephonenumbers1, IDictionary<string, string> extendedproperties1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.StaffGroup> groups1)
+	  	public Staff(string id1, ClearCanvas.Healthcare.PersonName name1, ClearCanvas.Healthcare.Sex sex1, string title1, string licensenumber1, string billingnumber1, ClearCanvas.Healthcare.StaffTypeEnum type1, string username1, IList<ClearCanvas.Healthcare.EmailAddress> emailaddresses1, IList<ClearCanvas.Healthcare.Address> addresses1, IList<ClearCanvas.Healthcare.TelephoneNumber> telephonenumbers1, IDictionary<string, string> extendedproperties1, ISet<ClearCanvas.Healthcare.StaffGroup> groups1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -300,7 +300,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.StaffGroup> Groups
+	  	public virtual ISet<ClearCanvas.Healthcare.StaffGroup> Groups
 	  	{
 			
 			get { return _groups; }

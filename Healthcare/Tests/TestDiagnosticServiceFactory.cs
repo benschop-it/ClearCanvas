@@ -40,7 +40,7 @@ namespace ClearCanvas.Healthcare.Tests
         internal static DiagnosticService CreateDiagnosticService(int numReqProcs)
         {
             // create a bunch of dummy procedure types (without procedure plans)
-            HashedSet<ProcedureType> procedureTypes = new HashedSet<ProcedureType>();
+            HashSet<ProcedureType> procedureTypes = new HashSet<ProcedureType>();
             for (int p = 0; p < numReqProcs; p++)
             {
                 ProcedureType pt = new ProcedureType("20" + p, "Procedure 20" + p);

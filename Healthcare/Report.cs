@@ -47,7 +47,7 @@ namespace ClearCanvas.Healthcare {
         /// <param name="procedure">The procedure being reported.</param>
         public Report(Procedure procedure)
         {
-            _procedures = new HashedSet<Procedure>();
+            _procedures = new HashSet<Procedure>();
             _parts = new List<ReportPart>();
 
             _procedures.Add(procedure);

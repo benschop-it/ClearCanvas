@@ -40,7 +40,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private bool _hasPostings;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.NotePosting> _postings;
+	  	private ISet<ClearCanvas.Healthcare.NotePosting> _postings;
 	  	
 	  	private ClearCanvas.Healthcare.Note _ghostOf;
 	  	
@@ -57,7 +57,7 @@ namespace ClearCanvas.Healthcare
 		 	
 		  	_creationTime = Platform.Time;
 		  	
-		  	_postings = new HashedSet<ClearCanvas.Healthcare.NotePosting>();
+		  	_postings = new HashSet<ClearCanvas.Healthcare.NotePosting>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -67,7 +67,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public Note(string category1, string body1, bool urgent1, DateTime creationtime1, ClearCanvas.Healthcare.Staff author1, ClearCanvas.Healthcare.StaffGroup onbehalfofgroup1, DateTime? posttime1, bool isfullyacknowledged1, bool haspostings1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.NotePosting> postings1, ClearCanvas.Healthcare.Note ghostof1)
+	  	public Note(string category1, string body1, bool urgent1, DateTime creationtime1, ClearCanvas.Healthcare.Staff author1, ClearCanvas.Healthcare.StaffGroup onbehalfofgroup1, DateTime? posttime1, bool isfullyacknowledged1, bool haspostings1, ISet<ClearCanvas.Healthcare.NotePosting> postings1, ClearCanvas.Healthcare.Note ghostof1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -235,7 +235,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.NotePosting> Postings
+	  	public virtual ISet<ClearCanvas.Healthcare.NotePosting> Postings
 	  	{
 			
 			get { return _postings; }

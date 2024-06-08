@@ -22,11 +22,11 @@ namespace ClearCanvas.Healthcare
        	#region Private fields
        	
 		
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.PatientProfile> _profiles;
+	  	private ISet<ClearCanvas.Healthcare.PatientProfile> _profiles;
 	  	
 	  	private IList<ClearCanvas.Healthcare.PatientAttachment> _attachments;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.PatientNote> _notes;
+	  	private ISet<ClearCanvas.Healthcare.PatientNote> _notes;
 	  	
 	  	private IList<ClearCanvas.Healthcare.Allergy> _allergies;
 	  	
@@ -41,11 +41,11 @@ namespace ClearCanvas.Healthcare
 	  	public Patient()
 	  	{
 		 	
-		  	_profiles = new HashedSet<ClearCanvas.Healthcare.PatientProfile>();
+		  	_profiles = new HashSet<ClearCanvas.Healthcare.PatientProfile>();
 		  	
 		  	_attachments = new List<ClearCanvas.Healthcare.PatientAttachment>();
 		  	
-		  	_notes = new HashedSet<ClearCanvas.Healthcare.PatientNote>();
+		  	_notes = new HashSet<ClearCanvas.Healthcare.PatientNote>();
 		  	
 		  	_allergies = new List<ClearCanvas.Healthcare.Allergy>();
 		  	
@@ -57,7 +57,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public Patient(Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.PatientProfile> profiles1, IList<ClearCanvas.Healthcare.PatientAttachment> attachments1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.PatientNote> notes1, IList<ClearCanvas.Healthcare.Allergy> allergies1)
+	  	public Patient(ISet<ClearCanvas.Healthcare.PatientProfile> profiles1, IList<ClearCanvas.Healthcare.PatientAttachment> attachments1, ISet<ClearCanvas.Healthcare.PatientNote> notes1, IList<ClearCanvas.Healthcare.Allergy> allergies1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -82,7 +82,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.PatientProfile> Profiles
+	  	public virtual ISet<ClearCanvas.Healthcare.PatientProfile> Profiles
 	  	{
 			
 			get { return _profiles; }
@@ -107,7 +107,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.PatientNote> Notes
+	  	public virtual ISet<ClearCanvas.Healthcare.PatientNote> Notes
 	  	{
 			
 			get { return _notes; }

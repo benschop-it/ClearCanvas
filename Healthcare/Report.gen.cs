@@ -24,7 +24,7 @@ namespace ClearCanvas.Healthcare
 		
 	  	private ClearCanvas.Healthcare.ReportStatus _status;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> _procedures;
+	  	private ISet<ClearCanvas.Healthcare.Procedure> _procedures;
 	  	
 	  	private IList<ClearCanvas.Healthcare.ReportPart> _parts;
 	  	
@@ -39,7 +39,7 @@ namespace ClearCanvas.Healthcare
 	  	public Report()
 	  	{
 		 	
-		  	_procedures = new HashedSet<ClearCanvas.Healthcare.Procedure>();
+		  	_procedures = new HashSet<ClearCanvas.Healthcare.Procedure>();
 		  	
 		  	_parts = new List<ClearCanvas.Healthcare.ReportPart>();
 		  	
@@ -51,7 +51,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public Report(ClearCanvas.Healthcare.ReportStatus status1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> procedures1, IList<ClearCanvas.Healthcare.ReportPart> parts1)
+	  	public Report(ClearCanvas.Healthcare.ReportStatus status1, ISet<ClearCanvas.Healthcare.Procedure> procedures1, IList<ClearCanvas.Healthcare.ReportPart> parts1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -87,7 +87,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> Procedures
+	  	public virtual ISet<ClearCanvas.Healthcare.Procedure> Procedures
 	  	{
 			
 			get { return _procedures; }

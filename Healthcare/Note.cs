@@ -54,7 +54,7 @@ namespace ClearCanvas.Healthcare {
         	_onBehalfOfGroup = onBehalfOf;
             _body = body;
         	_urgent = urgent;
-            _postings = new HashedSet<NotePosting>();
+            _postings = new HashSet<NotePosting>();
 
             _creationTime = Platform.Time;
         }

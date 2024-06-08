@@ -339,7 +339,9 @@ namespace ClearCanvas.Healthcare
 			destOrder.UpdateScheduling();
 
 			// Add ghost procedures back to the source order.
-			_procedures.AddAll(ghostProcedures);
+			foreach (var ghostProcedure in ghostProcedures) {
+				_procedures.Add(ghostProcedure);
+			}
 
 			// Set source order to merged status
 			SetStatus(OrderStatus.MG);
@@ -408,8 +410,8 @@ namespace ClearCanvas.Healthcare
 					null,
 					_orderingPractitioner,
 					_orderingFacility,
-					new HashedSet<Procedure>(), // will be added later
-					new HashedSet<Procedure>(), // ghosts
+					new HashSet<Procedure>(), // will be added later
+					new HashSet<Procedure>(), // ghosts
 					CollectionUtils.Map(_resultRecipients, (ResultRecipient rr) => (ResultRecipient)rr.Clone()),
 					new List<OrderAttachment>(),
 					_reasonForStudy,
@@ -418,7 +420,7 @@ namespace ClearCanvas.Healthcare
 					OrderStatus.SC,
 					null,
 					null,
-					new HashedSet<Order>(),
+					new HashSet<Order>(),
 					ExtendedPropertyUtils.Copy(_extendedProperties)
 				);
 
@@ -451,7 +453,9 @@ namespace ClearCanvas.Healthcare
 			{
 				newOrder.AddProcedure(procedure);
 			}
-			destOrder.Procedures.AddAll(ghostProcedures);	// note: procedure Indexes are already set correctly
+			foreach (var ghostProcedure in ghostProcedures) {
+				destOrder.Procedures.Add(ghostProcedure); // note: procedure Indexes are already set correctly
+            }
 
 			// update scheduling/status information
 			newOrder.UpdateScheduling();

@@ -49,7 +49,7 @@ namespace ClearCanvas.Healthcare.Tests
 				new List<Address>(),
 				new List<TelephoneNumber>(),
 				new Dictionary<string, string>(),
-				new HashedSet<StaffGroup>());
+				new HashSet<StaffGroup>());
 		}
 	}
 }

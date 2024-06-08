@@ -43,10 +43,10 @@ namespace ClearCanvas.Healthcare
 		{
 			_type = type;
 			_number = procedureNumber;
-			_procedureSteps = new HashedSet<ProcedureStep>();
+			_procedureSteps = new HashSet<ProcedureStep>();
 			_procedureCheckIn = new ProcedureCheckIn();
-			_reports = new HashedSet<Report>();
-			_protocols = new HashedSet<Protocol>();
+			_reports = new HashSet<Report>();
+			_protocols = new HashSet<Protocol>();
 			_scheduledDuration = type.DefaultDuration;
 			_studyInstanceUID = studyInstanceUid;
 		}
@@ -435,7 +435,7 @@ namespace ClearCanvas.Healthcare
 				_order,
 				_type,
 				_number,
-				new HashedSet<ProcedureStep>(),
+				new HashSet<ProcedureStep>(),
 				_scheduledStartTime,
 				_scheduledDuration,
 				_scheduledEndTime,
@@ -451,8 +451,8 @@ namespace ClearCanvas.Healthcare
 				_imageAvailability,
 				_downtimeRecoveryMode,
 				_studyInstanceUID,
-				new HashedSet<Report>(),
-				new HashedSet<Protocol>(),
+				new HashSet<Report>(),
+				new HashSet<Protocol>(),
 				this);
 		}
 

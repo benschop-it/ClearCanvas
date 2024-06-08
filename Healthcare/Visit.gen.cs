@@ -56,7 +56,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private string _preadmitNumber;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.AmbulatoryStatusEnum> _ambulatoryStatuses;
+	  	private ISet<ClearCanvas.Healthcare.AmbulatoryStatusEnum> _ambulatoryStatuses;
 	  	
 	  	private IDictionary<string, string> _extendedProperties;
 	  	
@@ -77,7 +77,7 @@ namespace ClearCanvas.Healthcare
 		  	
 		  	_practitioners = new List<ClearCanvas.Healthcare.VisitPractitioner>();
 		  	
-		  	_ambulatoryStatuses = new HashedSet<ClearCanvas.Healthcare.AmbulatoryStatusEnum>();
+		  	_ambulatoryStatuses = new HashSet<ClearCanvas.Healthcare.AmbulatoryStatusEnum>();
 		  	
 		  	_extendedProperties = new Dictionary<string, string>();
 		  	
@@ -89,7 +89,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public Visit(ClearCanvas.Healthcare.Patient patient1, ClearCanvas.Healthcare.VisitNumber visitnumber1, ClearCanvas.Healthcare.VisitStatus status1, DateTime? admittime1, DateTime? dischargetime1, string dischargedisposition1, ClearCanvas.Healthcare.PatientClassEnum patientclass1, ClearCanvas.Healthcare.PatientTypeEnum patienttype1, ClearCanvas.Healthcare.AdmissionTypeEnum admissiontype1, ClearCanvas.Healthcare.Facility facility1, ClearCanvas.Healthcare.Location currentlocation1, string currentroom1, string currentbed1, IList<ClearCanvas.Healthcare.VisitLocation> locations1, IList<ClearCanvas.Healthcare.VisitPractitioner> practitioners1, bool vipindicator1, string preadmitnumber1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.AmbulatoryStatusEnum> ambulatorystatuses1, IDictionary<string, string> extendedproperties1)
+	  	public Visit(ClearCanvas.Healthcare.Patient patient1, ClearCanvas.Healthcare.VisitNumber visitnumber1, ClearCanvas.Healthcare.VisitStatus status1, DateTime? admittime1, DateTime? dischargetime1, string dischargedisposition1, ClearCanvas.Healthcare.PatientClassEnum patientclass1, ClearCanvas.Healthcare.PatientTypeEnum patienttype1, ClearCanvas.Healthcare.AdmissionTypeEnum admissiontype1, ClearCanvas.Healthcare.Facility facility1, ClearCanvas.Healthcare.Location currentlocation1, string currentroom1, string currentbed1, IList<ClearCanvas.Healthcare.VisitLocation> locations1, IList<ClearCanvas.Healthcare.VisitPractitioner> practitioners1, bool vipindicator1, string preadmitnumber1, ISet<ClearCanvas.Healthcare.AmbulatoryStatusEnum> ambulatorystatuses1, IDictionary<string, string> extendedproperties1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -391,7 +391,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.AmbulatoryStatusEnum> AmbulatoryStatuses
+	  	public virtual ISet<ClearCanvas.Healthcare.AmbulatoryStatusEnum> AmbulatoryStatuses
 	  	{
 			
 			get { return _ambulatoryStatuses; }

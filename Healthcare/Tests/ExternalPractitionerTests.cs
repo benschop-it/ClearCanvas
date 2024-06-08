@@ -52,7 +52,7 @@ namespace ClearCanvas.Healthcare.Tests
 					licenseNumber, billingNumber,
 					false, null,
 					null,
-					new HashedSet<ExternalPractitionerContactPoint>(),
+					new HashSet<ExternalPractitionerContactPoint>(),
 					new Dictionary<string, string>(),
 					null);
 			}

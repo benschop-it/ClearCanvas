@@ -22,7 +22,7 @@ namespace ClearCanvas.Healthcare
        	#region Private fields
        	
 		
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> _procedures;
+	  	private ISet<ClearCanvas.Healthcare.Procedure> _procedures;
 	  	
 	  	private ClearCanvas.Healthcare.Staff _author;
 	  	
@@ -34,7 +34,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private ClearCanvas.Healthcare.ProtocolRejectReasonEnum _rejectReason;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProtocolCode> _codes;
+	  	private ISet<ClearCanvas.Healthcare.ProtocolCode> _codes;
 	  	
 	  	
 	  	#endregion
@@ -47,9 +47,9 @@ namespace ClearCanvas.Healthcare
 	  	public Protocol()
 	  	{
 		 	
-		  	_procedures = new HashedSet<ClearCanvas.Healthcare.Procedure>();
+		  	_procedures = new HashSet<ClearCanvas.Healthcare.Procedure>();
 		  	
-		  	_codes = new HashedSet<ClearCanvas.Healthcare.ProtocolCode>();
+		  	_codes = new HashSet<ClearCanvas.Healthcare.ProtocolCode>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -59,7 +59,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public Protocol(Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> procedures1, ClearCanvas.Healthcare.Staff author1, ClearCanvas.Healthcare.Staff supervisor1, ClearCanvas.Healthcare.ProtocolStatus status1, ClearCanvas.Healthcare.ProtocolUrgencyEnum urgency1, ClearCanvas.Healthcare.ProtocolRejectReasonEnum rejectreason1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProtocolCode> codes1)
+	  	public Protocol(ISet<ClearCanvas.Healthcare.Procedure> procedures1, ClearCanvas.Healthcare.Staff author1, ClearCanvas.Healthcare.Staff supervisor1, ClearCanvas.Healthcare.ProtocolStatus status1, ClearCanvas.Healthcare.ProtocolUrgencyEnum urgency1, ClearCanvas.Healthcare.ProtocolRejectReasonEnum rejectreason1, ISet<ClearCanvas.Healthcare.ProtocolCode> codes1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -90,7 +90,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> Procedures
+	  	public virtual ISet<ClearCanvas.Healthcare.Procedure> Procedures
 	  	{
 			
 			get { return _procedures; }
@@ -175,7 +175,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProtocolCode> Codes
+	  	public virtual ISet<ClearCanvas.Healthcare.ProtocolCode> Codes
 	  	{
 			
 			get { return _codes; }

@@ -27,7 +27,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private string _name;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProcedureType> _procedureTypes;
+	  	private ISet<ClearCanvas.Healthcare.ProcedureType> _procedureTypes;
 	  	
 	  	private bool _deactivated;
 	  	
@@ -42,7 +42,7 @@ namespace ClearCanvas.Healthcare
 	  	public DiagnosticService()
 	  	{
 		 	
-		  	_procedureTypes = new HashedSet<ClearCanvas.Healthcare.ProcedureType>();
+		  	_procedureTypes = new HashSet<ClearCanvas.Healthcare.ProcedureType>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -52,7 +52,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public DiagnosticService(string id1, string name1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProcedureType> proceduretypes1)
+	  	public DiagnosticService(string id1, string name1, ISet<ClearCanvas.Healthcare.ProcedureType> proceduretypes1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -109,7 +109,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProcedureType> ProcedureTypes
+	  	public virtual ISet<ClearCanvas.Healthcare.ProcedureType> ProcedureTypes
 	  	{
 			
 			get { return _procedureTypes; }

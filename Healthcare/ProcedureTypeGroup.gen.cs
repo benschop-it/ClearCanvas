@@ -26,7 +26,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private string _description;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProcedureType> _procedureTypes;
+	  	private ISet<ClearCanvas.Healthcare.ProcedureType> _procedureTypes;
 	  	
 	  	
 	  	#endregion
@@ -39,7 +39,7 @@ namespace ClearCanvas.Healthcare
 	  	public ProcedureTypeGroup()
 	  	{
 		 	
-		  	_procedureTypes = new HashedSet<ClearCanvas.Healthcare.ProcedureType>();
+		  	_procedureTypes = new HashSet<ClearCanvas.Healthcare.ProcedureType>();
 		  	
 		  	
 		  	CustomInitialize();
@@ -49,7 +49,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public ProcedureTypeGroup(string name1, string description1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProcedureType> proceduretypes1)
+	  	public ProcedureTypeGroup(string name1, string description1, ISet<ClearCanvas.Healthcare.ProcedureType> proceduretypes1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -104,7 +104,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.ProcedureType> ProcedureTypes
+	  	public virtual ISet<ClearCanvas.Healthcare.ProcedureType> ProcedureTypes
 	  	{
 			
 			get { return _procedureTypes; }

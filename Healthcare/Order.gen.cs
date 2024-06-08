@@ -50,9 +50,9 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private ClearCanvas.Healthcare.Facility _orderingFacility;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> _procedures;
+	  	private ISet<ClearCanvas.Healthcare.Procedure> _procedures;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> _ghostProcedures;
+	  	private ISet<ClearCanvas.Healthcare.Procedure> _ghostProcedures;
 	  	
 	  	private IList<ClearCanvas.Healthcare.ResultRecipient> _resultRecipients;
 	  	
@@ -70,7 +70,7 @@ namespace ClearCanvas.Healthcare
 	  	
 	  	private ClearCanvas.Healthcare.OrderMergeInfo _mergeInfo;
 	  	
-	  	private Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Order> _mergeSourceOrders;
+	  	private ISet<ClearCanvas.Healthcare.Order> _mergeSourceOrders;
 	  	
 	  	private IDictionary<string, string> _extendedProperties;
 	  	
@@ -87,9 +87,9 @@ namespace ClearCanvas.Healthcare
 		 	
 		  	_enteredTime = Platform.Time;
 		  	
-		  	_procedures = new HashedSet<ClearCanvas.Healthcare.Procedure>();
+		  	_procedures = new HashSet<ClearCanvas.Healthcare.Procedure>();
 		  	
-		  	_ghostProcedures = new HashedSet<ClearCanvas.Healthcare.Procedure>();
+		  	_ghostProcedures = new HashSet<ClearCanvas.Healthcare.Procedure>();
 		  	
 		  	_resultRecipients = new List<ClearCanvas.Healthcare.ResultRecipient>();
 		  	
@@ -99,7 +99,7 @@ namespace ClearCanvas.Healthcare
 		  	
 		  	_mergeInfo = new ClearCanvas.Healthcare.OrderMergeInfo();
 		  	
-		  	_mergeSourceOrders = new HashedSet<ClearCanvas.Healthcare.Order>();
+		  	_mergeSourceOrders = new HashSet<ClearCanvas.Healthcare.Order>();
 		  	
 		  	_extendedProperties = new Dictionary<string, string>();
 		  	
@@ -111,7 +111,7 @@ namespace ClearCanvas.Healthcare
 	  	/// <summary>
 	  	/// All fields constructor
 	  	/// </summary>
-	  	public Order(ClearCanvas.Healthcare.Patient patient1, ClearCanvas.Healthcare.Visit visit1, string placernumber1, string accessionnumber1, ClearCanvas.Healthcare.DiagnosticService diagnosticservice1, DateTime enteredtime1, ClearCanvas.Healthcare.Staff enteredby1, string enteredcomment1, DateTime? schedulingrequesttime1, DateTime? scheduledstarttime1, DateTime? starttime1, DateTime? endtime1, ClearCanvas.Healthcare.ExternalPractitioner orderingpractitioner1, ClearCanvas.Healthcare.Facility orderingfacility1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> procedures1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> ghostprocedures1, IList<ClearCanvas.Healthcare.ResultRecipient> resultrecipients1, IList<ClearCanvas.Healthcare.OrderAttachment> attachments1, string reasonforstudy1, ClearCanvas.Healthcare.OrderPriority priority1, int priorityrank1, ClearCanvas.Healthcare.OrderStatus status1, ClearCanvas.Healthcare.OrderCancelInfo cancelinfo1, ClearCanvas.Healthcare.OrderMergeInfo mergeinfo1, Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Order> mergesourceorders1, IDictionary<string, string> extendedproperties1)
+	  	public Order(ClearCanvas.Healthcare.Patient patient1, ClearCanvas.Healthcare.Visit visit1, string placernumber1, string accessionnumber1, ClearCanvas.Healthcare.DiagnosticService diagnosticservice1, DateTime enteredtime1, ClearCanvas.Healthcare.Staff enteredby1, string enteredcomment1, DateTime? schedulingrequesttime1, DateTime? scheduledstarttime1, DateTime? starttime1, DateTime? endtime1, ClearCanvas.Healthcare.ExternalPractitioner orderingpractitioner1, ClearCanvas.Healthcare.Facility orderingfacility1, ISet<ClearCanvas.Healthcare.Procedure> procedures1, ISet<ClearCanvas.Healthcare.Procedure> ghostprocedures1, IList<ClearCanvas.Healthcare.ResultRecipient> resultrecipients1, IList<ClearCanvas.Healthcare.OrderAttachment> attachments1, string reasonforstudy1, ClearCanvas.Healthcare.OrderPriority priority1, int priorityrank1, ClearCanvas.Healthcare.OrderStatus status1, ClearCanvas.Healthcare.OrderCancelInfo cancelinfo1, ClearCanvas.Healthcare.OrderMergeInfo mergeinfo1, ISet<ClearCanvas.Healthcare.Order> mergesourceorders1, IDictionary<string, string> extendedproperties1)
 			:base()
 	  	{
 		  	CustomInitialize();
@@ -380,7 +380,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Procedure> Procedures
+	  	public virtual ISet<ClearCanvas.Healthcare.Procedure> Procedures
 	  	{
 			
 			get { return _procedures; }
@@ -482,7 +482,7 @@ namespace ClearCanvas.Healthcare
 		
 		
 		[PersistentProperty]
-	  	public virtual Iesi.Collections.Generic.ISet<ClearCanvas.Healthcare.Order> MergeSourceOrders
+	  	public virtual ISet<ClearCanvas.Healthcare.Order> MergeSourceOrders
 	  	{
 			
 			get { return _mergeSourceOrders; }

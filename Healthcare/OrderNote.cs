@@ -119,7 +119,7 @@ namespace ClearCanvas.Healthcare
 				Platform.Time,
 				false,
 				false,
-				new HashedSet<NotePosting>(),
+				new HashSet<NotePosting>(),
 				null,
 				order);
 		}
@@ -145,7 +145,7 @@ namespace ClearCanvas.Healthcare
 				postTime,
 				false,
 				false,
-				new HashedSet<NotePosting>(),
+				new HashSet<NotePosting>(),
 				null,
 				order);
 		}
@@ -181,7 +181,7 @@ namespace ClearCanvas.Healthcare
 				this.PostTime,
 				this.IsFullyAcknowledged,
 				false,							// ghost copies do not have postings
-				new HashedSet<NotePosting>(),	// ghost copies do not have postings
+				new HashSet<NotePosting>(),	// ghost copies do not have postings
 				this,
 				_order);
 		}
